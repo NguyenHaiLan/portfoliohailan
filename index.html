@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio cá nhân của Nguyễn Hải Lân, sinh viên Kinh tế Đối ngoại, Trường Đại học Ngoại thương.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Nguyễn Hải Lân</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: hero = player profile (left) + 3D shirt on a turf podium (right) → turf strip → LED hoarding →
+     full-bleed 3D stadium (4 goals on an arc, ball on the spot) → net-framed panel per goal → contact.
+     Deliberately single-theme: bright kit red, gold and fresh grass green on white, as requested. */
+  :root {
+    --paper: #FFFAF8;
+    --white: #FFFFFF;
+    --ink: #1B1214;
+    --ink-2: #5A4A4C;
+    --red: #DA291C;
+    --red-deep: #B3170D;
+    --gold: #FBE122;
+    --gold-2: #F2C700;
+    --grass-1: #3FAD57;
+    --grass-2: #35A14D;
+    --grass-deep: #1D7A37;
+    --sky-1: #9DD6FF;
+    --sky-2: #E7F6FF;
+    --rule: #F0DCD8;
+    --mist: #FDEEEB;
+    --chalk: rgba(255, 255, 255, .92);
+    --post-hi: #FFFFFF;
+    --post-mid: #E4E7EA;
+    --post-lo: #B5BCC2;
+    --shade: rgba(27, 18, 20, .3);
+    --backdrop: rgba(12, 34, 18, .68);
+
+    --f-display: "Archivo", "Be Vietnam Pro", system-ui, sans-serif;
+    --f-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --t-md: 1.0625rem;
+    --t-lg: 1.3rem;
+    --t-xl: clamp(2rem, 4.6vw, 3.2rem);
+    color-scheme: light;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 1rem; line-height: 1.6; overflow-x: clip; }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  a { color: inherit; }
+  button { font: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; box-shadow: 0 0 0 6px var(--ink); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .wrap { max-width: 1160px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+  /* Shared type */
+  .lbl { font-family: var(--f-display); font-weight: 700; font-stretch: 100%; text-transform: uppercase; letter-spacing: .12em; font-size: .76rem; color: var(--ink-2); }
+  .tag { display: inline-block; font-family: var(--f-display); font-weight: 800; font-stretch: 100%; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; line-height: 1; padding: 6px 9px 5px; border-radius: 4px; background: var(--ink); color: var(--gold); box-shadow: 0 3px 0 var(--red); }
+  .eyebrow { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 12px; margin: 0 0 16px; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: .86rem; color: var(--red-deep); }
+
+  /* 3D buttons */
+  .btn { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border: 2px solid var(--ink); border-radius: 8px; font-family: var(--f-display); font-weight: 800; font-stretch: 100%; font-size: .95rem; line-height: 1.2; text-decoration: none; box-shadow: 0 4px 0 var(--ink); transition: transform .08s ease, box-shadow .08s ease, background .15s; }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 5px 0 var(--ink); }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .btn-red { background: var(--red); color: var(--white); }
+  .btn-red:hover { background: var(--red-deep); }
+  .btn-white { background: var(--white); color: var(--ink); }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+
+  /* ---------- Top bar ---------- */
+  .topbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px; padding-block: 18px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--f-display); font-weight: 800; font-stretch: 105%; font-size: 1.2rem; }
+  .brand-num { display: inline-grid; place-items: center; width: 38px; height: 38px; background: var(--red); color: var(--white); font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: 1.15rem; clip-path: polygon(22% 0, 78% 0, 100% 18%, 88% 34%, 88% 100%, 12% 100%, 12% 34%, 0 18%); }
+  .nav { display: flex; gap: clamp(14px, 3vw, 30px); }
+  .nav a { text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: .95rem; padding-bottom: 3px; border-bottom: 2px solid transparent; }
+  .nav a:hover { border-color: var(--red); color: var(--red-deep); }
+
+  /* ---------- Hero / Hiệp 1 ---------- */
+  .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 64px); align-items: start; padding-block: clamp(12px, 3vw, 32px) clamp(44px, 6vw, 72px); }
+  .name { margin: 0; font-family: var(--f-display); font-weight: 900; font-stretch: 108%; text-transform: uppercase; letter-spacing: -.01em; }
+  .name-first { display: block; font-size: clamp(1.9rem, 4.8vw, 3.1rem); line-height: 1.12; color: var(--ink); }
+  .name-last { display: block; font-size: clamp(3.3rem, 10vw, 6.9rem); line-height: 1.08; color: var(--red); text-shadow: 0 1px 0 var(--red-deep), 0 2px 0 var(--red-deep), 0 3px 0 var(--red-deep), 0 4px 0 var(--red-deep), 0 10px 18px rgba(179, 23, 13, .25); }
+  .role { margin: 14px 0 0; font-family: var(--f-display); font-weight: 700; font-stretch: 100%; font-size: var(--t-lg); line-height: 1.3; }
+  .role mark { background: linear-gradient(transparent 60%, var(--gold) 60%); color: inherit; padding-inline: 2px; }
+  .lede { max-width: 60ch; margin: 16px 0 0; font-size: var(--t-md); color: var(--ink-2); }
+  .lede + .lede { margin-top: 10px; }
+
+  .profile { margin: 28px 0 0; max-width: 680px; overflow: hidden; border: 2px solid var(--ink); border-radius: 12px; background: var(--white); box-shadow: 0 6px 0 var(--ink); }
+  .profile-body { display: grid; grid-template-columns: 172px minmax(0, 1fr); }
+  .mugshot { margin: 0; padding: 14px; display: grid; gap: 10px; align-content: start; justify-items: center; border-right: 1px solid var(--rule); background: linear-gradient(180deg, var(--sky-2) 0%, var(--white) 70%); }
+  .mugshot img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 5px 0 var(--red); background: var(--white); }
+  .mugshot figcaption { display: flex; align-items: center; gap: 8px; font-family: var(--f-display); font-weight: 800; font-size: .9rem; }
+  .mugshot figcaption b { display: inline-grid; place-items: center; min-width: 30px; height: 30px; padding-inline: 4px; border-radius: 6px; background: var(--red); color: var(--white); font-stretch: 80%; font-size: 1rem; box-shadow: 0 3px 0 var(--ink); }
+  .sheet-head { margin: 0; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 0; background: var(--grass-2); background-image: repeating-linear-gradient(90deg, var(--grass-1) 0 40px, var(--grass-2) 40px 80px); color: var(--white); }
+  .sheet-head .lbl { color: var(--white); }
+  .sheet-head b { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: 1.2rem; line-height: 1; }
+  .facts { margin: 0; min-width: 0; background: var(--white); }
+  .fact { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 4px 14px; padding: 11px 14px; border-top: 1px solid var(--rule); align-items: baseline; }
+  .fact:first-child { border-top: 0; }
+  .fact dd { margin: 0; font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: .86rem; font-weight: 600; line-height: 1.4; padding: 3px 11px; border: 1.5px solid var(--red); border-radius: 999px; color: var(--red-deep); background: var(--white); }
+  .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+  .email-row a { color: var(--red-deep); font-weight: 600; text-decoration-thickness: 1.5px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .copy { cursor: pointer; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; line-height: 1.3; padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 5px; background: var(--white); color: var(--ink); box-shadow: 0 2px 0 var(--ink); }
+  .copy:hover { background: var(--gold); }
+  .copy:active { transform: translateY(2px); box-shadow: none; }
+  .cta { margin-top: 30px; padding: 14px 22px; font-size: 1.1rem; }
+  .cta svg { width: 22px; height: 22px; flex: none; }
+
+  /* Showcase (3D shirt) */
+  .card-col { position: relative; display: grid; gap: 22px; justify-items: center; }
+  .showcase { position: relative; width: min(100%, 390px); border: 2px solid var(--ink); border-radius: 22px; overflow: hidden; box-shadow: 8px 8px 0 var(--red); background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 56%, transparent 56%), repeating-linear-gradient(180deg, var(--grass-1) 0 22px, var(--grass-2) 22px 44px); }
+  .showcase canvas { display: block; width: 100%; aspect-ratio: 1 / 1.08; height: auto; touch-action: pan-y; cursor: grab; }
+  .showcase canvas.grabbing { cursor: grabbing; }
+  .jersey-2d { display: none; width: 76%; margin: 24px auto 40px; }
+  .showcase.no3d canvas { display: none; }
+  .showcase.no3d .jersey-2d { display: block; }
+  .sc-top { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; }
+  .sc-num { font-family: var(--f-display); font-weight: 900; font-stretch: 80%; font-size: 1.6rem; line-height: 1; color: var(--red); -webkit-text-stroke: 1px var(--ink); text-shadow: 2px 2px 0 var(--ink); }
+  .sc-hint { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); white-space: nowrap; pointer-events: none; padding: 5px 12px; border-radius: 999px; background: rgba(27, 18, 20, .72); color: var(--white); font-size: .78rem; font-weight: 600; }
+  .showcase.no3d .sc-hint { display: none; }
+
+  .bl { position: relative; width: min(100%, 390px); padding: 12px 16px 14px; background: var(--white); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 6px 0 var(--ink); }
+  .bl-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed var(--ink-2); font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .76rem; color: var(--red-deep); }
+  .bl-row { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr); gap: 10px; line-height: 1.35; padding-block: 3px; }
+  .bl-row .lbl { padding-top: 2px; font-size: .7rem; }
+  .bl-row span:last-child { font-weight: 600; }
+  .barcode { height: 26px; margin-top: 10px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 12px, var(--ink) 12px 13px, transparent 13px 17px); }
+  .tilt { transition: transform .25s ease; will-change: transform; }
+
+  /* Turf strip + LED hoarding */
+  .turf { position: relative; height: 34px; background: var(--grass-2); background-image: repeating-linear-gradient(90deg, var(--grass-1) 0 64px, var(--grass-2) 64px 128px); }
+  .turf::before { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 3px; background: var(--chalk); }
+  .ticker { overflow: hidden; color: var(--gold); background: linear-gradient(180deg, #2A2124 0%, var(--ink) 45%, #0E0909 100%); border-block: 3px solid var(--gold); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .12); }
+  .ticker-track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
+  .ticker-track span { white-space: nowrap; padding: 11px 16px; font-family: var(--f-display); font-weight: 800; font-stretch: 112%; text-transform: uppercase; letter-spacing: .06em; font-size: 1rem; text-shadow: 0 0 10px rgba(251, 225, 34, .45); }
+  .ticker-track .star { color: var(--red); padding-inline: 2px; text-shadow: none; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ---------- Stadium / Hiệp 2 ---------- */
+  .stadium { color: var(--white); background-color: var(--grass-2); background-image: repeating-linear-gradient(90deg, var(--grass-1) 0 90px, var(--grass-2) 90px 180px); }
+  .stadium-head { display: grid; grid-template-columns: minmax(0, 1fr); padding-block: clamp(40px, 6vw, 64px) 26px; }
+  .stadium .eyebrow { color: var(--gold); }
+  .stadium h2 { margin: 0; font-family: var(--f-display); font-weight: 800; font-stretch: 104%; font-size: var(--t-xl); line-height: 1.1; letter-spacing: -.01em; text-shadow: 0 3px 0 var(--grass-deep); }
+  .stadium-head p { margin: 12px 0 0; max-width: 58ch; font-size: var(--t-md); }
+
+  .stage { position: relative; height: clamp(470px, 52vw, 700px); overflow: hidden; background: var(--sky-2); border-block: 4px solid var(--white); }
+  .stage canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; }
+  .glabels { position: absolute; inset: 0; pointer-events: none; }
+  .glabel { pointer-events: auto; position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); visibility: hidden; display: grid; justify-items: center; gap: 2px; padding: 6px 12px 7px; border: 2px solid var(--ink); border-radius: 10px; background: var(--white); color: var(--ink); box-shadow: 0 4px 0 var(--ink); cursor: pointer; white-space: nowrap; transition: background .15s, transform .15s; }
+  .glabel::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 12px; height: 12px; margin-left: -6px; background: inherit; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg); }
+  .stage.ready .glabel { visibility: visible; }
+  .glabel .gl-num { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: .64rem; color: var(--red-deep); line-height: 1.2; }
+  .glabel .gl-title { font-family: var(--f-display); font-weight: 800; font-stretch: 100%; font-size: 1rem; line-height: 1.15; }
+  .glabel .gl-check { position: absolute; top: -10px; right: -10px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); background: var(--gold); font-size: .8rem; font-weight: 800; line-height: 1; }
+  .glabel.hover, .glabel:hover { background: var(--gold); }
+  .glabel.scored { background: var(--gold); }
+  .stage.busy .glabel { pointer-events: none; }
+  .hud { position: absolute; top: 14px; left: clamp(12px, 3vw, 32px); display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-radius: 10px; background: var(--ink); color: var(--white); box-shadow: inset 0 0 0 2px var(--gold), 0 5px 0 #000; }
+  .hud .lbl { color: var(--gold); }
+  .hud b { font-family: var(--f-display); font-weight: 900; font-stretch: 75%; font-size: 1.9rem; line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .hud span:last-child { font-family: var(--f-display); font-weight: 700; font-stretch: 75%; font-size: 1.1rem; }
+  .stage-hint { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); margin: 0; padding: 7px 14px; border-radius: 999px; background: rgba(27, 18, 20, .78); color: var(--white); font-size: .88rem; font-weight: 600; white-space: nowrap; transition: opacity .2s; }
+  .stage.busy .stage-hint { opacity: 0; }
+  .stage-foot { padding-block: 22px clamp(44px, 6vw, 64px); display: grid; justify-items: center; }
+  .poker { margin: 0; padding: 10px 18px; border: 2px solid var(--ink); border-radius: 10px; background: var(--gold); color: var(--ink); text-align: center; font-family: var(--f-display); font-weight: 800; font-size: 1.15rem; line-height: 1.3; box-shadow: 0 5px 0 var(--ink); }
+
+  /* Fallback without 3D */
+  .stage.no3d { height: auto; padding: 28px 16px; background: transparent; border: 0; }
+  .stage.no3d canvas, .stage.no3d .stage-hint { display: none; }
+  .stage.no3d .hud { position: static; width: fit-content; margin: 0 auto 18px; }
+  .stage.no3d .glabels { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 720px; margin: 0 auto; }
+  .stage.no3d .glabel { position: relative; transform: none; visibility: visible; padding: 18px 12px; white-space: normal; }
+  .stage.no3d .glabel::after { display: none; }
+
+  /* Goal burst */
+  .burst { position: absolute; z-index: 40; pointer-events: none; transform: translate(-50%, -50%); }
+  .burst-text { display: block; font-family: var(--f-display); font-weight: 900; font-stretch: 112%; font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1; color: var(--gold); -webkit-text-stroke: 2px var(--ink); text-shadow: 0 2px 0 var(--ink), 0 4px 0 var(--ink), 0 6px 0 var(--ink), 0 14px 20px rgba(0, 0, 0, .35); animation: pop 1.15s cubic-bezier(.2, 1.4, .4, 1) forwards; }
+  @keyframes pop { 0% { transform: scale(.2) rotate(-8deg); opacity: 0; } 25% { transform: scale(1.15) rotate(-5deg); opacity: 1; } 65% { transform: scale(1) rotate(-5deg); opacity: 1; } 100% { transform: translateY(-18px) rotate(-5deg); opacity: 0; } }
+  .cf { position: absolute; left: 50%; top: 50%; width: 8px; height: 12px; }
+  .cf.c1 { background: var(--gold); } .cf.c2 { background: var(--white); } .cf.c3 { background: var(--ink); } .cf.c4 { background: var(--red); }
+
+  /* ---------- Net panel (dialog) ---------- */
+  dialog.net { width: min(980px, calc(100% - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: auto; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: visible; transform-origin: 50% 100%; }
+  dialog.net::backdrop { background: var(--backdrop); }
+  dialog.net[open]::backdrop { animation: fade .3s ease; }
+  @keyframes fade { from { opacity: 0; } }
+  .goalframe { position: relative; display: flex; flex-direction: column; max-height: calc(100dvh - 24px); padding: 18px 18px 0; filter: drop-shadow(0 30px 34px rgba(0, 0, 0, .45)); }
+  .post { position: absolute; top: 0; bottom: 14px; width: 18px; z-index: 2; border-radius: 9px 9px 0 0; background: linear-gradient(90deg, var(--post-lo), var(--post-hi) 38%, var(--post-mid) 70%, var(--post-lo)); }
+  .post-l { left: 0; } .post-r { right: 0; }
+  .crossbar { position: absolute; top: 0; left: 0; right: 0; height: 18px; z-index: 3; border-radius: 9px; background: linear-gradient(180deg, var(--post-lo), var(--post-hi) 38%, var(--post-mid) 70%, var(--post-lo)); }
+  .net-inner { position: relative; z-index: 1; min-height: 0; display: flex; flex-direction: column; background-color: var(--white); background-image: repeating-linear-gradient(45deg, rgba(27, 18, 20, .08) 0 1.5px, transparent 1.5px 16px), repeating-linear-gradient(-45deg, rgba(27, 18, 20, .08) 0 1.5px, transparent 1.5px 16px); }
+  .net-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 14px 16px 12px; }
+  .net-body { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 0 16px 16px; }
+  .net-turf { position: relative; z-index: 4; height: 16px; margin-inline: -18px; border-radius: 0 0 8px 8px; border-top: 3px solid var(--white); background: var(--grass-2); background-image: repeating-linear-gradient(90deg, var(--grass-1) 0 44px, var(--grass-2) 44px 88px); }
+
+  .sheet { padding: clamp(18px, 3.2vw, 34px); background: var(--white); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 6px 0 var(--ink); }
+  .p-title { margin: 6px 0 0; font-family: var(--f-display); font-weight: 800; font-stretch: 104%; font-size: clamp(1.8rem, 4.4vw, 2.7rem); line-height: 1.1; letter-spacing: -.01em; color: var(--red); }
+  .p-lede { max-width: 66ch; margin: 12px 0 0; font-size: var(--t-md); color: var(--ink-2); }
+  .k-head { font-family: var(--f-display); font-weight: 800; font-stretch: 100%; line-height: 1.15; }
+
+  /* Illustrations */
+  .art { flex: none; display: inline-grid; place-items: center; background: var(--white); border: 2px solid var(--ink); border-radius: 14px; box-shadow: 0 4px 0 var(--ink); transition: transform .2s ease; }
+  .art svg { width: 76%; height: 76%; overflow: visible; }
+  .art-sm { width: 50px; height: 50px; border-radius: 12px; }
+  .art-md { width: 62px; height: 62px; }
+  .art-lg { width: 84px; height: 84px; border-radius: 18px; }
+  .sheet .art:hover { transform: translateY(-3px) rotate(-4deg); }
+  .ico * { stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .ico .ns { stroke: none; }
+  .ico .fr { fill: var(--red); } .ico .fg { fill: var(--gold); } .ico .fw { fill: var(--white); } .ico .fk { fill: var(--ink); }
+  .ico .fs { fill: var(--sky-1); } .ico .fn { fill: var(--grass-1); }
+
+  /* Panel 1 */
+  .fav-grid { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .fav { min-width: 0; display: grid; gap: 4px; align-content: start; justify-items: start; padding-top: 14px; border-top: 4px solid var(--red); }
+  .fav .art { margin-bottom: 8px; }
+  .fav-v { font-size: 1.45rem; }
+  .fav-n { font-size: .93rem; color: var(--ink-2); }
+  .moments { margin-top: 26px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .moment { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 16px; align-content: start; align-items: start; padding: 18px 20px; border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 5px 0 var(--ink); }
+  .moment.up { background: var(--gold); color: var(--ink); }
+  .moment.down { background: var(--ink); color: var(--white); }
+  .moment.down .lbl { color: var(--gold); }
+  .moment > .art { grid-row: span 3; }
+  .moment h4 { margin: 0; font-size: 1.35rem; }
+  .moment p { margin: 0; font-size: .95rem; }
+
+  /* Panel 2 */
+  .transfers { list-style: none; margin: 24px 0 0; padding: 0 0 0 22px; border-left: 3px dashed var(--red); display: grid; gap: 6px; }
+  .transfers li { position: relative; display: grid; grid-template-columns: 50px minmax(0, 1fr); align-items: center; gap: 14px; padding-block: 8px; }
+  .t-text { min-width: 0; display: grid; gap: 2px; }
+  .transfers li::before { content: ""; position: absolute; left: -32px; top: calc(50% - 8px); width: 13px; height: 13px; border-radius: 50%; background: var(--white); border: 3px solid var(--red); }
+  .transfers li.now::before { background: var(--red); }
+  .transfers strong { font-size: 1.3rem; }
+  .t-text span:last-child { color: var(--ink-2); }
+  .stats { margin-top: 22px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .stat .art { margin-bottom: 10px; }
+  .stat { min-width: 0; display: grid; gap: 2px; align-content: start; justify-items: start; padding: 16px 18px; background: var(--mist); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 5px 0 var(--ink); }
+  .s-v { font-family: var(--f-display); font-weight: 900; font-stretch: 85%; font-size: 2.6rem; line-height: 1.1; color: var(--red); font-variant-numeric: tabular-nums; }
+  .s-n { font-size: .92rem; color: var(--ink-2); }
+
+  /* Panel 3 */
+  .clubs { margin-top: 24px; display: grid; gap: 18px; }
+  .club { padding: clamp(16px, 2.6vw, 24px); border: 2px solid var(--ink); border-radius: 10px; box-shadow: 0 5px 0 var(--ink); }
+  .club-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+  .club-head > div { min-width: 0; }
+  .club h4 { margin: 4px 0 0; font-size: 1.4rem; }
+  .promo { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .pr { position: relative; display: inline-grid; gap: 2px; padding: 8px 14px; border: 1.5px solid var(--rule); border-radius: 8px; background: var(--white); line-height: 1.3; font-weight: 600; }
+  .pr .lbl { color: var(--red-deep); font-size: .66rem; }
+  .pr.cap { padding-right: 46px; border: 2px solid var(--ink); background: var(--red); color: var(--white); box-shadow: 0 3px 0 var(--ink); }
+  .pr.cap .lbl { color: var(--gold); }
+  .armband { position: absolute; right: 10px; top: 50%; width: 26px; height: 26px; margin-top: -13px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); background: var(--gold); color: var(--ink); font-family: var(--f-display); font-weight: 900; font-size: .9rem; }
+  .promo .arrow { font-family: var(--f-display); font-weight: 800; font-size: 1.4rem; color: var(--red); }
+  .club-dl { margin: 16px 0 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 10px 16px; }
+  .club-dl dt { padding-top: 3px; }
+  .club-dl dd { margin: 0; min-width: 0; }
+  .signed { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .signed li { padding: 4px 10px; border-radius: 6px; background: var(--mist); font-size: .9rem; font-weight: 600; }
+  .signed li::before { content: "✓ "; color: var(--red); font-weight: 800; }
+  .club-stamp { display: inline-block; margin-top: 12px; padding: 4px 10px; transform: rotate(-4deg); border: 2.5px solid var(--red); border-radius: 4px; color: var(--red); font-family: var(--f-display); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: .74rem; }
+
+  /* Panel 4 */
+  .games { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+  .game { display: grid; grid-template-columns: 3.4rem minmax(0, 15rem) minmax(0, 1fr); align-items: center; gap: 6px 18px; padding: 12px 14px; border: 2px solid var(--ink); border-radius: 10px; background: var(--white); box-shadow: 0 4px 0 var(--ink); }
+  .g-slot { width: 3.4rem; height: 3.4rem; }
+  .g-name { min-width: 0; display: grid; gap: 2px; }
+  .g-name strong { font-size: 1.2rem; }
+  .g-name .lbl { color: var(--red-deep); }
+  .game p { margin: 0; min-width: 0; font-size: .94rem; color: var(--ink-2); }
+
+  /* ---------- Contact ---------- */
+  .contact { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 26px 48px; align-items: end; padding-block: clamp(52px, 7vw, 92px) 28px; }
+  .contact h2 { margin: 0; font-family: var(--f-display); font-weight: 800; font-stretch: 104%; font-size: var(--t-xl); line-height: 1.1; letter-spacing: -.01em; }
+  .contact h2 em { font-style: normal; color: var(--red); }
+  .contact p { max-width: 56ch; margin: 12px 0 0; font-size: var(--t-md); color: var(--ink-2); }
+  .mail-card { display: grid; gap: 12px; padding: 20px 22px; border: 2px solid var(--ink); border-radius: 12px; background: var(--ink); color: var(--white); box-shadow: 0 6px 0 var(--red); }
+  .mail-card .lbl { color: var(--gold); }
+  .addr { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.1rem, 2.6vw, 1.4rem); line-height: 1.2; overflow-wrap: anywhere; }
+  .mail-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mail-actions .btn { font-size: .85rem; padding: 8px 12px; border-color: var(--white); box-shadow: 0 4px 0 var(--white); }
+  .foot-note { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 18px; margin-top: 12px; border-top: 1px solid var(--rule); font-size: .82rem; color: var(--ink-2); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+    .contact { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .stage { height: 480px; }
+    .fav-grid, .moments, .stats { grid-template-columns: minmax(0, 1fr); }
+    .glabel { padding: 4px 8px 5px; border-radius: 8px; }
+    .glabel .gl-title { font-size: .82rem; }
+    .glabel .gl-num { font-size: .56rem; }
+  }
+  @media (max-width: 640px) {
+    .game { grid-template-columns: 3.4rem minmax(0, 1fr); }
+    .game p { grid-column: 2; }
+  }
+  @media (max-width: 600px) {
+    .profile-body { grid-template-columns: minmax(0, 1fr); }
+    .mugshot { grid-template-columns: 120px minmax(0, 1fr); justify-items: start; align-items: end; border-right: 0; border-bottom: 1px solid var(--rule); }
+  }
+  @media (max-width: 520px) {
+    .fact { grid-template-columns: minmax(0, 1fr); }
+    .club-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .club-dl dd + dt { margin-top: 10px; }
+    .promo { flex-direction: column; align-items: flex-start; }
+    .promo .arrow { transform: rotate(90deg); margin-left: 18px; line-height: 1; }
+    .nav { gap: 14px; }
+    .nav a { font-size: .85rem; }
+    .stage.no3d .glabels { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track, .burst-text { animation: none !important; }
+    .tilt, .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="ballclip"><circle cx="50" cy="50" r="47"/></clipPath>
+    <symbol id="ball-sym" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="47" fill="#FFFFFF"/>
+      <g clip-path="url(#ballclip)" fill="#1B1214">
+        <polygon points="50.0,35.0 64.3,45.4 58.8,62.1 41.2,62.1 35.7,45.4"/>
+        <polygon points="50.0,18.0 35.7,7.6 41.2,-9.1 58.8,-9.1 64.3,7.6"/>
+        <polygon points="80.4,40.1 85.9,23.3 103.5,23.3 109.0,40.1 94.7,50.5"/>
+        <polygon points="68.8,75.9 86.4,75.9 91.9,92.7 77.6,103.0 63.4,92.7"/>
+        <polygon points="31.2,75.9 36.6,92.7 22.4,103.0 8.1,92.7 13.6,75.9"/>
+        <polygon points="19.6,40.1 5.3,50.5 -9.0,40.1 -3.5,23.3 14.1,23.3"/>
+        <path d="M50 35 V19 M64.3 45.4 L79.5 40.4 M58.8 62.1 L68.2 75.1 M41.2 62.1 L31.8 75.1 M35.7 45.4 L20.5 40.4" stroke="#1B1214" stroke-width="2.6" fill="none"/>
+      </g>
+      <circle cx="50" cy="50" r="47" fill="none" stroke="#1B1214" stroke-width="3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="topbar">
+    <a class="brand" href="#hiep-1"><span class="brand-num" aria-hidden="true">16</span>H. Lân</a>
+    <nav class="nav" aria-label="Điều hướng">
+      <a href="#hiep-1">Hiệp 1</a>
+      <a href="#hiep-2">Hiệp 2</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+  </header>
+
+  <!-- ================= HIỆP 1 · THÔNG TIN CÁ NHÂN ================= -->
+  <section id="hiep-1" class="hero" aria-labelledby="ten">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="tag">Hiệp 1</span> Thông tin cá nhân</p>
+      <h1 class="name" id="ten"><span class="name-first">Nguyễn</span><span class="name-last">Hải Lân</span></h1>
+      <p class="role">Sinh viên <mark>Kinh tế Đối ngoại</mark> · Trường Đại học Ngoại thương</p>
+      <p class="lede">Xin chào, tôi là Nguyễn Hải Lân, sinh viên K63 chương trình Chất lượng cao Kinh tế Đối ngoại tại Trường Đại học Ngoại thương (FTU). Ngoài giờ học, tôi dành thời gian cho ba niềm yêu thích: đá bóng, chơi game và giao lưu, kết nối với mọi người. Điểm chung của cả ba là đều cần một đội hình thật ăn ý.</p>
+      <p class="lede">Portfolio này được dựng như một trận đấu hai hiệp: thông tin cơ bản của tôi ở hiệp 1, còn hồ sơ chính nằm sau bốn khung thành ở hiệp 2.</p>
+
+      <div class="profile">
+        <div class="sheet-head"><span class="lbl">Hồ sơ cầu thủ</span><b>#16</b></div>
+        <div class="profile-body">
+          <figure class="mugshot">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEBAQEAwUEBAQGBQUGCA0ICAcHCBALDAkNExAUExIQEhIUFx0ZFBYcFhISGiMaHB4fISEhFBkkJyQgJh0gISD/2wBDAQUGBggHCA8ICA8gFRIVICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wgARCAIIAYYDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAECAwQFBgcI/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/9oADAMBAAIQAxAAAAH62NAAAIkAAAAAAAESIAAAAAAAiYAgAACwoAAAAAAAAQSrYIEq2ETAAACBQQCgImAIE2QkSFAAAAAAGEzY/nHgM3655z5Xjl+o5/kFj632/hORP0R2vzx9F1PpLXvWVjuSAAEBQQKRKWEwgKEWFAAAAADxx1vifI5uNXyUmSuKchN8EGTHjmJ2cOQ+jev+M9/T6x2PgVdT9CZ/z/6E+wPL+lq4AAQKCWEwgSgWFAAAAAcX8/8ArfnnPc2w7LN9XPrGPNGA3NbNJi2K0MmXHeJwa+QsRWPLXEdH618a3V/T+X5d9Q6ZkWBAUAiUQmAJbCgAAAHB73yGX5zztvX53KnJZqRvaZTFsYymTN2c9eDk9dv46eFr9B1pfA4/TcPfHFl1tnfOJYxlpdev9U+O9E/SbU2+mAAAApEwBm2FAAAAR+f/AL7+cOe+FjyYZJz4c1kxt7GOmjTZW7frOX6Tz+zPvW2+XbUxdKscHznvNPWfluj9C8z28/Cmad/JEzazHbJhl++ex+T/AFjpgNQICghEqgZthQAAAHG/PP3r8/8APWtOPajX2J25rZrbW5+jW356NdT1HP8AR8PVW+Sc6pN7VhpsRc83gev07n5Lw/pXzrt5a48denn2aVm3333T8+/oLeQuQULAhAoRYUAAABzPzJ+rvzdjXn9/n5c3Pv6u5npubivP1bG3T1edZuna64ZslTZLGPLS5piyY05Pyr7J4HXL59TZ1vR475K3Ppf2bxPtumQsCAAETAEthQAAAD459j8tL+f6b3W5dNPY9P5/j6tl0tjUz+k8Hgr6lfwPrmugrTO8led5ZPY8rxGe49Z0PF5s32WhO1nfyXhfUPm/bxavb5P2Tpy99uHSImEAAAgKEWFAAAAMOYfnvrd7kcO/sNLqYeHrpk1uHb6Gnjt1PQ5sW1N7FctE09XewZuPY5HB1PbYeX2LNLdmY5nyT7F8h6efX/Q/x79A+jyyNZRMKAABAgC0xNAIAAADzfz32fk/P6vZae9r8vT5PrdCbr5n1PaU6ccXVx5eXbPkwZlwczsa1x5j5p9h0+vHW1fTW5d8W2tmafxf7R8x3x9n9W+efQu/nkdOKABQAIEAXFEiIkQmABato8JyOzpeH6vZrW2pkyWv0zrY9q01hxZ9bNtn1smdZb4dnWNHD08K1yxm1jVw7Opm6fm/S8jFx/VvJ+r7cJg9XhAACUCABGSACphMREqgAHnOL6nzPk+lsZdXPnW7n1tjZW2LUxaGbW59OnbQombZ0EvVtqbeszKtzraufWzcHD7Uc+nb9H5r0vr+cQ6+eYSQKCUgABFxQAAgAAxeW9dyeXo87sref15c+C27nw2anM8t7bDjpzcHZZz5D0m/DVtjHfWbY4qmPBmw5a+3Xq3PQ3T1/ORMWABYEQFCALiiURExQAkhMAHN4XrfI8PXmUjj6skYtQ3I4nLa9bj8nXPo9nl8PsXn6zL4/wBG5blaTJbDlwWd/r4M/s+aGsoECgoICWABF0xQCJgAkCJEAef9Dr535ecGbyfQjm9K81wnb070pScV9W9r4dlxvkyM+eERFsup3+nHsj1+ACExYFAABCCUIyQUgAEgTAIAJB5DX6vD8fv3Mmtlz1zVtk00Nfsxm87azwYq2wxTFGBJ9v4n3nfy5B6PKAIQKCggBExAS5IKgAEgARMAEg5Pm/S+f8vt1c8YMdt+2jatuNHHL045qN7DpxGXI2CntPGdHt5vTj0+QBEkgaABACJiUItMTUAAmYEwCJgAlEHK8v6/gz0Y8eLa8Ps09XrLPP4fQ4JeHl6+WXn7exJS2TVjjet81733ePctp7m/MABAsCgyBUAEWFAASABADGZNfXbTeturkcj12Pz9+GjH4/VkXpnVYvdcVsupEcjq+p78EI9/iizmx354u1h0GLLlAQAIRIgSgWSqAASiRDGZMOjrbbWplt0V3NLc0mYEzAvpbU4vndjucfyeqkampw75t2/e9HnjFaPX5axkVXW3OUbNk2LRaXNn0GHRaexhkGYBCYUIuhQAkhi1NMureOyrJFYZsSrJSzZmt5qIsISppbXH53Dh2+IvoOv5br7z00skTBixWnSs3okxKSkytmYqbOfRYdBqbHO2GQRYURr1n1McdSJnatq5CIlJWLzZWLxVcuEudW0pj83HnfbeF96uXHt11OTreh5tm9tcDoZvQjT241MuG9mVjvZEmRDVmsxITSWbUVtbHMnnem1XNuY8GDTJC3WQtFK2gx5aXITEgkY7xpjplJXFtVXkdHLkNe+W0paFrr7eA5uxsYdZbK0mBlpLEpsTErFL4yb48hGO+KMkEsCoXW3nLSEWql1bLAspeIi0TCJiSImCZKRMCYki2Ksu2tTNYM2Gxr58Ws55rKoCa3oiazTHlxy1vhyjBeplQyTVblVVuY7Ti4px5N5JiUClq2AkAE2xNbEwETCTFW1NOhjvTGmLPgsYM+DUy3x3iImCwqhWy9ZLr5MYmCLVtqLt3pYBM2fS3M61suLJrN4VltESVms23EkJSK2x2zfHkETCKzWqYclK6VLV56vgzYSNfY1t5zXxZEmtolmazZGPJQi1JrFg29GNmaXXHq5cbXRrkxJdC51enwe5NQtRLzSyzW1IiRbiwCMOTDLmvWyQJIiYrHTJire19jDjV4tFV1NvT1M98d2b1mJYtS9kRaDFaBOrt4zXza20uvg2+S1261vZruSja7XN6ZfHMkVaxbb0N+WLVtEjURNTFGLYlyxMTIAEaWxh06K1cammTGU5+/ztzayYslzZWYi0KkgpW1ZbomXVy3x21896Px8evtXUrxDeR7TZosvamRcPP2+TG90+V1SLBIsYr6ktN7U3EESSQTVSsN8Wet2l640pemlOd0efZnzYNhmhFXQJgKRNc3JEFQtbHivcePzfT+S9X4fWfXOgTPq7OmbF8cNYOH1uFm97q8frWWSiStledvc5ejlrZIEkwhYpbHqUzYM5t0yUzohWPQ3tKzJs6e0zWqtZZrJMTJSLVlFGr1mYwcHrahhrzPYWFRtYyzWzE1xNAxe31jUySFahr6wnTgkSWqhGMMOwWbsGdUFYtEsy5RIoauSxJMiVoS1qTVcpZyqkvM9IIFf/xAAwEAABAwIEBAYCAgMBAQAAAAABAAIDBBEFEBIhEyAxQAYUIjAyQTNQFSMWJEI0cP/aAAgBAQABBQL/AOV3/VOcGNq8aghB8ShpZ4n0r/KYgf8AJmyOjxN7xHWHVHIJB+mkkZEzEPEjWGpxSepRfcukVzm2V8Zp8VnY+gxmN7o5WyNL2tQcCP0VdiVNQsxLFqitn1i2yuVtfInNjyDhOKysPnNYpquJobUROTZI3G/f4rjTKJlTLJNJe7gEQbIWstS65BWUJsv5DQw4nKv5itUWOVDVB4jbqo8UhnDXBw7vEaqOkpKupfPM55emrYJxW6vYDo4FNNlqVl/y2Sxe4uNjbota1XUU0sL8HxwPax7XjuvENYJ69zrkFApxCuF0F007aQrZBbaT8grZWCLSEDtE5wfg+KBx7nFasUmHz+p/VBl05mkWXRdcgrlabrS5aXJzStJV0DfO6LbKM+oOWC4mXs7jxBUGWvf8r7i6DW3KKsrKOPUmUl0yjFm0AC8o0J9I1ylpNKfFZWsW9CrJrl0TH7U0zoqiml41L2xNm1kpdWyG7ldBy6rStK03NOxMYmsQauGjGpIVUUakprLRY2tlax0kD7JXh6pFRhvbP+FU8GpsrKyATWLhgued4xdU8e0LE1qDVZWRYpIgWS0200Fk/ZAo2s1+kkBXXhGTftsTn8vh0nRpu1+x02TQmRJ9yn2VMyygG0LLNDVZWVlZFqdEqimuqqHSr6XOV7oHZxXhaXTiPbY5c4ROVH8nj+wbiNPe4ttdMp9wz1U8Vg1u3JbKykZtW0+0zbO1bIFFeGA44922IM4mGzXL2bOJ9RCjCDSS2H07MbTQqCPa3sOU7LsrIy2bP68IQHj9vidL5fFOhB3HqdGE27RxLqOFz3QQaQ1tuc5HLFqfS57bZgLw1BwsG7fxTTujrdKawlzoRTy042kqIWqJ1xDNFGIp4itQ5bp9RGxOxGJpGIxlNmZJlUQtniq6YwvLNysNoX11bTwiCHt8epfM4VpWGQiaqrqLiRxR3jiw+yOGkB1HIx3Cqg6nlqmKKS4uiU+QhVUk7j5WZxbSlibC5Bj4hDNxGLFogYH9SvC1Jopu4lGqHEKU0tXgjN9Fw2nZEA0LYI6FpatDUxtl9Jy0NKEbUAAixpToIyGwhjlVt1Uz9jpJdg9OabCu58S0+l+CdUU+TSP5DVNVYxJSyUeKRVSum7qy0pwyqK2GmTcbpHPgrqWUh665Tfjf8sEhM+K/Xc43DxsKwPeVSbCpjlmGHeXp24kKqnODtlNNBctaLAZSN2qncGLEKWGnw6GdrMQq6KOWjg8xEotxZTfjk+XhOn37qrragvwn/wBqcFwgVosnRoMKaMhkdw5qexqZTU7X6I1wUBbKX8dNQmsfROGGxjp3MlmVVM3RjeQGRQbdW2QX0Fp2cxBqaEQrIqT8eCxkSiN0+Md1Ow/yQFsQuggrKysnZNR6NORWhAZORTvjQy8CShhHne6rWaanbVdBNzKcQADdzWenTqBu1zX8rkU7pOOFU4ef7u6rW/0uiIQQ6tzcU71J81PChNs6cNEVTDOH+kxuuMiU5FP6GBpWG3MndPbrj3Q2IQQOTgpLtMuFNrKptIyCGSgZUx0mGCglYXPTBbK6KKK/6cFTR8ODu6iBxdLHJG4ZXQORsrBG6C6oC2d1fIqOmNSoaN4Pe1jNUDTndal9lwCu1y1BiErCi7bVuDyOVA20PfOGpttL83yiNrq+HhmoLzxiFxtzMU2rkahiQNSx9+QqFuiDv6xmmQZywCZeSiiDWtJ8uuAAeDdENDmQsWkDO6p2cSo/QTR8WLcHKyKewFa3NXHK4jnJg5SdqBn9X6GsGirBQz0XToAV5UIQWQarIoolOKpxppv0OIM9YV0DkFfkuiicrKP8X6GuH9ZC6IFAq61LWtSLldFyvdAZRkOj/Q1zrQpwW4Qeta1ovXEXFXEW5TQrI7DBJzNhf6Gri8xBTzcVitdGNOa4IkhFxVyg1xTY0G54pUcGjwymdR4U03b35NmhVtE4ywztmFsrIxArgBcIIMCsrKymlbE3D6M1tUVGbO7+QoZVVC2dwkeyTO+dlZSvEbaemdiU9gAimVDXd6XtanTE5DN8cczJKWeBMka/Ky05yShghon1ZAaxuc7bPaTYTOTXtd3DpGtTp3HKMevmmpI5keJC5WWylmAVLR6iTyvI1gBW3sg5zUJUCD2bnBqfM4rqrbAK+k810Q14kp3RrjtT5rqmo9LuZt3Pty7oSFBwPYOlW5WjI9EQozb2Kyd8NNDFxqd7Y6NUteyZ3K/4W9kPKBv7jngIuLsr5nOyHM57Y2U3+wpHSkiB8lQIWtFPUaxySfP2bq6D0CD7BICLyeS3P0Q35cTxPzUtDb+OMQJ0tiDGPKkbw4WvV8yf7Qr+3dCRX5OiMnulA2zc9rVVmWrZBQmOSlbw6ZFl0G2U8eqKnf6SXARztfl/171yE2YZOcAidStyH2Dk5N2Ez5LRMehGEY2lMj08jwnRpnQM9VtrZjkOZ5rJzyextkQgLZ/eb/lZH0oZHnKHIOndt65yfNO3PsnoM/sdOS3bOUTrlHKXL79kodUchmMvrtXdIcjlJ8QnfL2vvMIndDJp27V3SI75BS/AdH9faKvn0AN3fZ6KM+hH5cw5jzuO0Pzzl/GOj+vtOQOcm0UKAR6qnN6f6f1+uUc45io/nnL+MJ/yHOcz06OByqjakpd4jsEVQuvTo845xzFN+RKFymlSfjT/AJDkHO8JuVU3VR0tuGSgpnaVhzt/dK+xz3sStG6d8E/5Dp7ThcNyn2p6R92oKtl0uphoxTkJQdd/OSm+wfyZu+Kk+bfccLOU29NQO1uK+q+YvmcNOLIZyOUXOUTu3nc5MHqzPxUnzb05zyHdBSbwYOblVUnCpsMgbUzTj1r7KupCoudybu765vsdcz0UnzZkUPb+sGFmrGZ9LaKDy1FINUV7hfTjZSOu6FDmlO0fOV9/eZyk+TMj7nQYaNLFCP5DGkE3YoFTbC/qhQ5SU83e3pzFfaPLL1j6I+5MbQ0TbR4jUeXoMJpuBRFBTeiXKU6lf1U/MUz1SD2Pv6+sx0l6sych7F86s/6tOLR1Y85iv0cpGh8cL9cSqHFpda9NlfK+Uhs2Aez9/X1mFNs5nREKxQ5Dyfarv/MHNihwuN2jL//EACgRAAEDAgYBBAMBAAAAAAAAAAEAAhEDEBIgITAxQEETIjJQBEJRYP/aAAgBAwEBPwH7qFCjvR0OOwOUcjaZK9FegUWEdFtw1EKmNLkJ9IeERFzuCw5thQ0GWs3zc7gs0IIKctQSLncCaJMLDC1UlC0rVA2qNg79Lm0QNUHMKi0L2+VCCr77aZbygnw9CiLEW9CdUz2LlVWl0AJ9Ms53nDQWNhY2KCwyvyny4D+b1IyzINBmYYVf5neovw6FA3xaKUDpGQ1GtRMmd+ifF2tJQolOokKLuMmegwwULCpCFdPqFSiqhhvSp/G4Km9fpUfjactcaT0qL40Oes79R02VS3lNcHcZKlbDo3qgkcJlWebVKvhvYxHjsH/YHtn7Idkb42v/xAAmEQABAwMEAgMAAwAAAAAAAAABAAIRECAwAzFAQRIhEzJQIlFg/9oACAECAQE/Af2pUqV5KeJNwK8kHDgEzjGU7WlwC+QL5Ag4HgurKlP3qCmvsGR1DSUfZUWMNRkNDXxUKFFG71GQo+lN8UYZCGZ9AZTmuCCNIKmjEMznAoph8EXkravyJ38lEJvaY8OzDugoaBFBFStAepzP9OoKdqRaVpfXM9s+1sUDQjtGwoMJQEDPqDusooGxogcBwkWSFIRo0SeE/esWaXC1Ptfo78LV05EivuzQZAko8ANo/RB9hOaRvZp6UmTQheOUNQFjmgp2lGyK09Lt1sIsRBwBsoCMHi2VFRaWyiCLAJQZhArGEs/pQg1R+6Kn/Jd8ntGw/nCn/8QAORAAAQIDBAgFAQcEAwAAAAAAAQACAxEhEBIgMQQiMEBBUWFxEzJQUoFCFCMzYpGhsVNygtFDcKL/2gAIAQEABj8C/wC1bzjRShkOcgTXsjNk+1UdRSn4XwhdjsdzV19SclyPo5fEcGjmV4eiGZ4la8Q/Jmq1WeDVdJNvcFIukf5UwqlTGXof3jpv4NGZRvuLWcG8lLY5rwXkunkuOsiC4qYeFqvB9AlCk+IcgU6LEiF8R2ZU9prPPOTVOHQ9SvxB8BVkfhfewyOy1Yl/+VMHfHRIjpJ0eJmf2UzsahTFpkqm3NXobpFCFpNDzVDvZhNf93D4z44Klao+SpnO3jglxtzwzYZOQhRH3XcjvT3zk51G9SjN1BmVyFmsVyGPnjnZMZKaDwhBjOnKkzw3nwwdWGFXJtmclPM2TtFmSqF5UdXBzCopj9LLzRY26ZXqKHF9w3clRnTnWWOth/VDETJZW8lVTblxCHKz+127mZko100vmqJwgTVBRFOCGI0WSPQqWCnlP7KRWkQux3eLElOiJmi1XZUGC62VVdbXqpld0NnNS4qtj4fFzd3jSHBSXyjbTVCusBeealmVcbsyZI4WS4NO76Q38hRQXyqIVU/3Ui64OMkJfopuqpnZGiOGPpMtWVwbxpEFpo0z+LacEJLj+iusb8lCk+/FddpeAphYSJFxnvEPSW+WK26bJKTvqhkT6pszLryUs1MNkhw7oScMdXgKUx+qk4Xf4K1XA2FjuKLDa2EMsyhCGQ3h9NZmsFNVyATWic28UJhZCvMrVDT8rK8Oi1dX9lJ2t3Q/jAWteR0C85+SvqPZqq1wHUK+0LKR42eJLy2u0r30G8vbzCfC4cE82ANGSyH6YMsOVtV5VQn5se3opKQEyVAhO80q71CjtbnOaiYPC0eGdIf0oF4b4UIuGYaTRSLXQ3dcsZ8R5mODVdEB5V1jjDf7XUwO7IqEA29cN473EHEVCjWynRXLlw9VpOihgfBixPEDwJpzdJaBCa2TAW1RYQdXKeFrWnWeZT9vVQ4sBg0hrIl+LP6+6fFh6MCHTuw+SheMBDjhoqFdc7xAPqtf2sjaT/hvZEEtuciM1pIlLpg8s15Aq4/Ir7YQa7mAqQ5nmcDuyNZBpqgwGTCfLz3u5zWmcnbm7sozh2QDq3TTe58iU5/uG5lPZd8xT4m9tf7lPYz2RUMji0KJ1E97DvaV4gxyUnRWtPUrOimXSHVakRr+xU27BsSLmFFeRLhvZbzVzljnKa8aLOSuQhIBFsaqc8TKldljHewda75fhCZOYQLxKeOezcL10jIoeM4GXLfp+3HUrUcFrPWewLuZ38t5otPDBecpteCp3lmvNZkSOybCuOmemJrfQA8ZOwXXeVfdMEuUllJSIXlC8oUm1KvEAuwtHAVPoJapHD1Ury8wWeMv5+hO61xZLLYQx09Ca7pt29vQgeu3aQZiXoQHM7aahud6FEhAyPA9VrC7EbR7eR2GWFzW+d1AtHgnzBte6n6F9r0X8b6m/wBQf7XIihB4bOaGn6QPuWH7tp+o87JegSt8WGfDj+7n3XhaQ24/+djNXnzGjNz/AD9FdaJAcrKKR1TvtSpNw3IrLwV6FOLD5fUFTGImkTbB9vFyDGC60ZAYAeaoVXealSbSyeO8NSJ7grkcdnDI4RG0j4Ziu8RhqFTc6qlBZKyewuuExyKvQpub7VmrrKk5LxIus/lyxueeJxUVdx1cdw/GwJhNvRTRrZpp0uFKJzd5legDWP1vOS8N1Hc+Bxd9lVU2nNV25e8yaMyvtrvqpD/K1FrXyqtd16SNzMKTs8IG1psKqm4/Z4P4Lf8A0tH/ALAjwVM1TPmg4c10wHbVxau41KMMajOXNa2YTYc/LZWx46zUnKbVUXTuNFWm6Sh06o3ySTxsqFLhgKmFLdKb2Otk/T2fPqLPUR3sG4S3/wCbBujTvo281PA3e/ncXFA4OziN5nOw7jEHRAcrQtIZ7X72dxeeiyk60LS2cw127jAdxif2lG2QTHf1IRH6bvXAdxiD8pT7HOUaPFE2DVCgRPa/+abuMB3EjonWNhDM1UOH9UpnuiEDz3YbrNGwvzhw6/6tdD9ts9jLf3n8pse6es7VCBcNeJrG1kT/ABNv8DYk7/E7IKDon/HCF9+AsPFV8wobKUBWrlsJ7gMGWzI5kBF7vK0TKfpUT8SOb/YW/wD/xAAqEAEAAgIBAwMEAgMBAQAAAAABABEhMUEQUWEgcYFAkaGxMFDB4fDRcP/aAAgBAQABPyH/AOTKS80V0GN3RuGHZ7Ti5x/UPaA5niVNn5ZQUfmQMwLa7UxK68r/AIha0OKtEEVC3b3lcHIamMiGx/pz4HkqO6Bw/qWTRe9+0yf3DEfX2S3jE80Yjda/Eut78Swlj5zBwHyGzw94KJLxDLoCD3tcy/6KwGhzoHhLTAgrj2mhTmKOVfmUlUKMVawMcSp2S74uByXByUglIMr3494/BmvHeUIVW0XX/kPwz3Z8IC4B0j9fQ4N4HvFaBeTHt4irjflnbCA2JeHNwChVxiwrXzDygU6ZR0VMCz7R1hyZGUI2cKvzAGTUvB7G/mdgeLpgdDmspK670sfYsXCZcj6zx4AbYjLxHZwRCdOX8RouYWbXBUQXNmIqUvswFOT4lTNjnxMFuJs9jNhFKgQgpwhRzCjEGGHH4B+33lqurf1YLPdB5TWH3ic1NVfiIYtuW4YsLhVwZWb/AGlXBn5ueJTTGyHwjwiX2jaUTcsNRG8p3l+8IdgSocYMA+INl/UtqqrNpEo7wcyhmPByxxiH+AGX4IaYlIqeeI6zL5bhMGbg7bEnmIKs8jMPQBlPER043AONx1BQBsgWlL3UqoUHY+B8P1PBxg89/wDu0Is/2JRsWyxo+DcN+whP9HMybZeKmB5fxN6lsVKRiCtlMlYy1zggqREgRnqdhLFrh3r2i28KbhAzkjVK7v3md2eJ46zw/wDNTvcK+/P0/YALi62be0XdvM1qXGowRU51LOUmMGCdpjXkEv0h2YgVqU5IbqCjjMDDCBYHYYj/AKIU7bd49oX8xQzQZEHLUQybGMS8/ic/+/T01itzZZIXvMlOMRgow1y37REtKJoh54hWKhguKqZXErqaAJYJmfqG5PBBDlcFuQuqAckRO7+5Z/zMal4095dvyzunLeQczR9OAkKMLaJQZZW33iWWkD7wUkGEe8wHMvJqZap7AduVYA7nMIO1mKii12e00qUw6B3RMFIVGICaIuVahgumdrTKC2kyCLDzAwlRPvn6cZMw/cMChHhfIl7neDbxAFLKhTvJR94Jd3EUf7jufuVxCLp5e9f9+JUXuVGJ1roqO0JTBSWlagsGaYxMhiPmLfavp1BLXBEslVgn7GAt90Y8INaMQXQvyzEv2A/yYgFQ4X/a/cRa7LKeRMCVAldExNdBiUzISXhqJS3NwhtFM5h539PQ4ckyvIBVUswjh37TXvhqKndhuNXuQjIrzpm0hyuy/wAEprpXMA1KiQ6V1a6UGWGZZucRlYJY14jsydfqD7chO5MbvFwCNrUR8Yfg/UFSku0Xht+Jq2O7DBydsF2TLedwbjMRQiQ2T8hDM9HtD9h8KfYYToNlxqpw/Nw89a8yoJ3mQd4VdbPianXH1AnE/d4kFt5xFdbdxzMGgqQ236m4CbZYyBL4V+0st+6M/Zg6ko8ZH/sVcaL9r9JrNkxK7g1J5KlJYXtSPXXllkeeVQI4bwnPibZDgdAe5ZSDjqCuJddb+0P1PlhJsAW/ZcDv7iGHmavyVuDtF+KWOf1HcVFuEBdoQ6bYLbYoybiEU1OEgOjFRTM1GfhAIL2bgW0wQt9QAMy3il/ln6oWOmHxdYmfws46BlTgMyp+Yt/RbFe8p2rjJfMFcMaxTcqgcyuUC3Mnv2mVl1aWwLHFaZm1xIcXlFjrmD9CXeIAACg+qpkVivvf/lxUTxHUVqRTaPYOYCjz87+ZvhHq7U8RG4s5q3vcpjtLDZDCKBZ0NTQYsunPwgV0DsKq/lmKkMA8tAxKsEKm61D4uhyRU4mkH3n6mx5WZXxh+/qnAsTR83AouMPZmJiWxZdQ7WCuwPNS7Hghtm04mhLsuaiLsZ5MTxkrDD/KYkMMlczjFR1H99+pY/FG2Ch3blFYe5/MfyWNcJmBYAT8S8TnoBUJ7xfAiSNXMlnCZMQrE8cIdQK1LY1mEzA7ptcaJ+bilJoHBNY+puAa1AY5WH7dGUMZc4UYsRalrijJ0FxHQNTWKfiSwwNlxOBY39X2Gi1XsaYYR56nPQxWJJKz3uZYXBcQegR1FHmP7ULu5ExPAfVmQ7gwX08RX0lBlyiZLMQHbVZcsNWWkYrOe1VUbY/tNS8Kotg31suhV+Mp14pfyCh9WaXCO3sQNEExmDMuyIzGFwxLsitUwBSWoERhj3lrG4E7TKl7pp8Qcz2R30afEwmtRh94QKzm+tbgCDXG7msJp0FGZ8ypwi7JbcTlmp2lQS5Z0OEdzWVBvfJEIDhy+uwEyrlkuLCkbag3F8kEN9fMc4vYmu++BPmlkXMvTHUUsL6+tTQqK5wqX0WNEoJsO6pl4w0G5FwwqV+JrfdkCvuzEp3LvpxM2d2w/oHFdz3jsjKxKgb5Hea5yUSvwmGJ4lVcAdoeNR1AFnHbU4vS44S/Mp/QgJ+49mCrYNMsqDCBMkxX4PMeKyUKaniCZNwuJFqW9JUk3x7f0JMI1KyIg8TcegKpcIfCCaI5ShiI6KOCeND/AEXuSkVPaGHSIiUriWS4sYc2RVcQkV7L+it7ekvIK6Z2Jg9QrjBjZOeYltIGf6IlOEgXLTU+zA7ymcxJzOW+lEbwY8rCKItBbGE3g/omvHPa4fmX+SXdnsid4jaE6xPJkSydFdojcYcysgV0v7wxNAefez/mU39AuGZZ8zTsFawI5LjFSvPRUqmoVqPYgfEHxKwgEUtqf9cFBwcTkyw78/0GIgY6YD4014iXInq9eQ8wp5ldHwlkq+stTK9v5at2eO8BwCoBQE3Lb2I+43dwbyfWEYSOGO5SmW5pnrXJ23j27TKovg/5htr4lRkgO8qo1zxOVBGvudiDZDQKDpfQKF70h8mcSJOUp+o7udiYMjL5e7PYK9Q5n2s/fucyn2YAp1mU5iguGxRWdtx5Z2I56ZhKziXAMppLcTXN+8BdUFtX9GPa+JgYsrmY0Yv8wQzBlwuWOT1EIQvsJh35RP8A2WkOwnCAbinXwcP944JvpUqcQ7AuhFTMxEJhtA63D8Oe386gWzi+6IvNwG2VxUthDvLCM/vJz6ah4gOOOlsyaWxpe9QetrbYfEwY4x/yR3KldXSDeEK66X1z0Fhn37wBygbv4yaXKNZY7TE8SZd9BCaJkjyRWefUA0tpxEW32JND+1lAbhYRxbc1eprZmxBHHw9K9lmEqJU49WG4VcMUac/woNjE4HWoWOjKxKI6gS7RUs9GsrQbXiJuU33nPt2goGCSZFhS3i/ExGNm1Daua/mYzNwBLJZ0u7OosdDD1VKl9oUbGmaj74BLGz0KC2f7kVW1tmYGY9DXWpUeqx4gjk5hAb9o7xNnlL+UWhru9ptZkX4m7qWDaACiYD1V+4tNxN9/HeAU3bZ53Kyh0Or0vqvXUMxV4iTm6eVY6zNJR10hv14TmYFTVg8R/JjrKl2YaL4F4Yd7Xw8SiMqZB3g6JlZBLEYbSvSeg9Dj0N/MwmJOYY9Lr+BgRsyqJYdVzA/HoF9NTsmkMNOqpXoZr1M56D1OgZiQa9CY6GfUwPVcVxzNdPwugUEOj698fRSXfqmkDPROYenn+XT0ENzZdlnEep6pNdRHpFihuLHXaKmCd0r1sP5XlBX36bQ6RpMOhxHoR9DuGJ4j1V0TiDEu5ZCRafS66H8B6L6FzO3Tb0auqxqGo9DokuDHUxZp12vQ9w6p3lSzxIxzx15jr+AvVcyJYfZ6G4T8STRHIhHoa6OownEOL9A74yjmmVul08QzGmoRcuG4x9Z9Jj0hA+YsNy5k/ZNJrmkOpqX6BqG4egGZ4Or9xeYJowioJZkgaWZmYa9DuPqLiLn03qxHvKsm4lppLCflH7nDNc06voMdwjqVNxQ3EJ2/5R0jmLjopRke/wBpFz1uX6D1Lv0j0TEaRXMOIbIFFT9b9ziPHpHU6sd9bmYNPRYbVoC3kVHXSIr1OCw0/EYOI76UEaocR9TqVTP1sVn5j0qZdLRNOr6WG+myZTiGpiTf+CWvtNpdXlx9ZnZ1P3Qxm0elB0Ouh6FiXAgo9dRiXl2vrc/EZ3jwj6GDcYeoQ0roHlP1dGGWZCrFTF7gedz2JHwFfs6D0HolqbOhr0LE24YHqWOTNrzOIvT8TpqmkOhdLj0ehroSsyr7xRlvtBqIn5ATi37i3KR3WPfiBJ4XCd0qMWmcJp6WKYcw4H1LF0h1LmjOJrmvWel6HR3BuKJ2HXF7lq/bGkWaRnflns6lzBmKJzzjNIw9BVya9R10EHDB2mYR5ho9piYuqQ/genhxPxKqVHT7m/6uYtvgOx9uou1r8Lr8xwxalZ84h+KLUOh0WOfPOh9FxzGXBjoJ11e01S1ehHrxHrtLs6UfH6M5k+VvH6hw6DU43FRA/wDbkUqURaC9pRXRqOwYMIsjFywmLy9bGDJF4R105mp7R0I43UVOPvAOU26HoMqWlIRf8GuIDT28BEl1fX8BCM//2gAMAwEAAgADAAAAEAgggogggggggkPvvvvvvvPvvvggggggggghkCAlPvv/AD/65b7nMIIIIIIIDp5R4/Lz77/7/wB418+CCCCCCBslZxP7WFFe++/9s3++CCCCCQ4RxHMoDTNo+x9/+8T1+CCCCCR73FtkRueVdEl3/wD/APxX4IIIIJ6yX9xlBAeq5Srf3739H4IIIII89Ou4jrBVDvrjb/72lz4IIIIKIA6RWE04q9PA137/ALjX+CCCCCwRlRhS29aLorvoX/8A6fPghigghA7y09AxVJJSFA1PvqPvqCCAgiH3ckGdY1zmUQg3/vqPviECBAqh7DSjfpgOSbhnf/vrvPngGlKMhGajJDovaQ3az2/vjPPsIOAIgtO/ddB4kdVbiVPve/PvoMvAiBAvNOK0+jG+4gn/ALz2zz4BBQ4BAqJHM9Yt1NEALXzzz1z4hiKQQyJTtFzsuDUkIIf7z7x/5ioZSgQJTgSx8K7nEIJPzz7tT6gJQQhwZgE9NudTsxoIL7z+hz4IJYBhpbaCYu9Bf9+5ID37/v74AJIj7pZQ4CTWkEcAI9jrz/8A0+sCAk0CT7qSQ+nwCegtTbfxM8+COyIs7bwYc7FCBe8Ds3M1q9c8iXnTnnbYzlX3wsILGLoUole18wPItlXBv1V5uWx/EIVliLaDMNK5X7x//wCOCLyPnequpDdEU9ATtq32xBs13NWJOCM++j21cz9qgeV7ZxNefqA4pqoOD4q94523GMPGm7rnPWgww0tolXd3bUOpJZsgcGvlPGqBwwuttLY4Qefx9Luf60FLtg9uMwzHqJJy3bUR9GlCQ/XPPHgAXwXwgwAg3/IvQ/vYnwf/xAAgEQEAAgIDAQEBAQEAAAAAAAABABEQMSAhMEFAUWFQ/9oACAEDAQE/EP8AkuDlfkBKSpXN9AuHU74pK4n0LHBl8CBcSvU3Ct4dnBsarGbjhs9XSxxdPnKswSkjCLFQxt6argwH8I9+4KCDLixZQ0wTaX5rqsdtyhsgNspBlxcJ0x3UJtg8tseLGdcK6hFEu8T7Nk1/v3vK7iLI6ge4glQEUNKol7IK6g1F9mx+sCFMK3cu9QKmotdoA0y7XEIGj+sX5sBf/IEt8hg6wNQO5pLOz5CJ+PYTHcNRMM7JSkoSolRwSVjOr2FfCAnWE7gCiQVVBOiLm477jMvvA87xcIxXsivkY6J0iRZZ/wBfgp2IeyDTcbaMFXFDTLO4rJbP4nYcK4G2GLo/Ep1C2THT/EF/2yMvB/kNf4fj6TsQC4JqFuoA+0f9/IjagdOrKvs1hrzfsweFf2NFHrjZgly/FZeBwSmuLrPzBL41xcXUu+DzI78nDCfcPIjCMJZj7lOBHBvDGHAjCVhx94OSODeXfM4ncOWsm8pzMMDA1ArxN5eRiurz083gby8SVg047yI8HBg3l4ngODisMN5cHJy//8QAIBEBAAIDAAMBAQEBAAAAAAAAAQARECExIDBBUWFxUP/aAAgBAgEBPxD/AJzipT6X8y3yWOwgL6HCelaLY2cc8KdMp2Ilnzwv13KnJyfMXnmBqK4mKzXm6UDP+TQMeUcAdwwUZfgR9O40hbcdwkdxhuLdMNlmGcS/BPO1k3E1c7OZ2YBAqVHdZ48b8zu5cUSNuiWipaWw6tCoTjxTzNkdLjcIFzQy4yw7GkiPk44TqVk9WpUWI6JsEiWKNst4SxpijPuH77uX8lnkZXhK+oMI8lQ3vAwswiiXK9aS4/6hcokYLnJR2QbnE/mFBuKJfcDHL6DYH2EMqO4PoTnIbmow2VBQwR9b6JTQ4Lvs20g+wL3BJcU2sqDJH10oIsGH4imiKkN4oDASsPrtJw3OwPzD+PZRhK4+ZvwqPqFMhCbMoM7K+Bhw+o1aFSsM19jN0eax9VF0Mciw2ymOoidmCmsnspeRjbj5IxGoblR12PySHKgsX8lMuX6QuW9gnISpUF2Tt2ipqo7KgIag2xiWA7ILL4XG4h8YB8XbU6K3NeT+R0Y8zr7B4nU8E4hBbKCXi4NxjG/k/SAXLjaIwlZcaYfYV+RnbABWK8CLUAcLgYOsBvAR5CVCXNw8DJgix5Btj0hHBkjgwdlZ75vJ1FtyGX4pDCbufMchEySoGDU3dy8GL9FR1GXrw5gcfI5MV5XBwyoeZyXCc8VwS+I6lXuVWLj+wwxyGAlQ54pDDxOKPBT5DK3gnMDGHPO/yfbh244dx7DkvwYRhKx8y5Z8ufJxj//EACoQAQACAgIBAwQCAwEBAQAAAAEAESExQVFhEHGBIDCRobHBQNHw4fFQ/9oACAEBAAE/EPsZ/wACv/0q/wDy3UPTNx9X76f5YDcuhbOc6gPKwGxwxCgILpgosU5RxZqWNj/AdfTUr0Gz/APce22PzBPb8g9xAMdxmWGrMVu6LOLNS8PES9gRqjzKALjNqujh8MHoq2EZ1aveOIwmsSm7WhjKdx1TynVqadXW9RK8M/Hk8f5OvurU2t3APbMDdh0cPSbp+IAlQRUHwrHwECve+Xtm8MTSs6Fo+I4qrt1VFwMU6FyoCDWUbgaucbX5uOp3ltBdCoZ0Zq3rqOIPKbWL4s8mr8Q7EsE0xwbaYSHUEB2/J95jX+EtFxXlGYjwdeYwH8mk9f8ArmUIAbrLPcoIJ2Q/tjdA1XDz4hUvhct/MOQAYt1N8U9hqWwyqaqPHHtEHMOK494yRDVjk9mUbfPatbD7KfEsgHkgtybBdvxAjFkNl6Qtw7CAdi4DHf4isptw/RowRLPt3/hKBaysajENc3o/cXuhVAXrgDgIzUubFXzFSleX/c0zDT1EpKS0W7/0TNl7Ne8zzeDrE4NVwAitkUmyHdo5CUbuG6bqcVTViwmaZj+E7P7mHS3FsuW+WV8QtiAERGhoNnlqbmwMNTz7+1QVl9Du++bffcpoMoBHzdn4r5hugGUJ8Dl/cDmbInX28f4BuOeIUS06PeKxPj0X8B/cIhmqAf64haIX5UKAaeBIaCCPcV4aNV3BNMvB/ctgV9sEBfL+5fB4JT+yKohpGjLGdwc+EXoGHwyiMvzuPxES9CeqdwDWji4JiwZmRsDqVitvcQut4aH/ANh/0TiLw68xKZcH2n/AWi8TOSQpU+Xxo+YqZg05L8Q39hCyAK8H+o5rs4u6+CIdwGdPwQUOow8HxHdCtTAO3nqUOdrQf1EaAysU/SiUim2uOviAJgQxxjp8RK9A2wpz/wB/qKprlg1UFNrMKgY1BLFtYb3MU+WOJQ3IoTMlE/7MrCSNNWcVpPeXciKFh0XdPDkEM0QgBhyfZZUr7zQkG6AxXQFq+PMqO3WN+fduWCy6Wfc6ioAX8f8AEwRz4j/uYl+EzM4FW0Hn/uZUXtW/d/0RBcGvLHVm61F+M+5ubLWuQplgohi3KfMQcxnOyDFEOLrZApyEx5BzFg6YNTs1nI6fnuAEa4OosWAxC97U7GKgdh1CVR09hlsFhK4LDvgeETknB9r2+6tcQkxbUxffycQQfiXCu5khV04r4hqFc0v8nUse35bV+YHCKXVG3R3BbSmFoe3jzyxVA4UPDn8w4PePbEbgDUBel1kl73cAcuo8Doyn+uINN6Yt1ETRLEOY8lvQbJV+U1FD31HWHmKyfE2K1mRk+OzxA7DM3Hk8SuY2xNEwjBMGwS8fDlqmCGQElpWwU1QR0+8AmwfeKf2v7V/dJjaXxmPKVZ4wsP8A3UrorVw/mOSUGCGXxMisXvmELVpTz49vELDs0Y56CYB2dv8A3B/MuSpLf3LSHgOMkIAjOdMwAKHaE57DqMFMeZXrttCVBmlcHHP9wmqzeONSwC+MX8JM+lpc+X9+8WcAMVsrp8fsmSBgDePBYGXwvydMC7eR8NbPeOhIJscnTDAljS2A0DoE2nvj7L91nKLHoauJoJnVZfNQF0Lf+Iyt2m2oSVg8zJhnAlAAu1o9rgDkZUDhyBziX/Eo2DgffK+8JBZy/qUFknOduIuZCXXUpBWpQlkuaFqOlFS50+SOm1R+RlSWrceJTRClUXZLLDXP9zFLHYGT2eTrkiJkSr7B3GLGlnDj/wAhWGSun0nUVymqzSQIVgStlor3Uu8/ZY19x0IIzjjKQgFdtZOIkMbBwOn8/lnGwABTtirDZ6KIwNreJVbgORyP9TZ5ZaVT2c/Ay1N3HRfg3XvlgAVMd+NX7tS8gTBoFH9wQOQBAAhMmsTewq4KXR9o/NLCQFJnJMkKICV4mOHdhGkUUhZHe27Ws+OpTD5r+e68xxJsGX9VXv0+8q00qmYUHh8ClezfxPivsX94ZybM8Adcylo7K62fzFQFqHzTEqmGCtdR7cRVmOZReLLhYlltw8qM+2Y2XKsTeFvK6vHiHgbQsK7f9/7ClAt7aZYf3fXnBqNQ7rxNYlDRAQ1AGrYVML8RNbqb2MtLGte0GFavWqhNLdRkDN+19RPGl0q6/ZBK5uC30XPEOlNGfmpdv+NgBwDTgvHnH7ijyqHjOpllF2DjiYh27M0J/qYrLMogkoshHP8A2IcOPmX7Lf8A5DBrRRal/J7fLD5VqGccnHZbbUYzLJBGkynXzi/ARK213wQxT/5GvvNF8yl1EGX4RMLi5V5/iFsYSUXaNQtODhrWY2uprEsyPMvY3sjbeTXiH+K35qww+CL4Pscx+6lREER03BEkS4Af3DbWa5l4Joyf4guYHyOG/mJ4WmCs5iMHFVGjwtwDMeVh4556IQorZDpVwboy7YVHtuBBqAxxGpiM8QoUmbgYJaIhCPvFdprnmOcU9kOmhZDVwWA4TBQz0HEaPpc56hOGmzn8x/CpfAP4lfUkqcy/u2kuWcZgdT9LHuGRZvxMXBh8zJqWN1W3yD5nOQR0sL/U1RyNRoOC6PmUxc4rUOWjb+I0BoKm/wBFeD9wudFlN37VBxhYsOyU6dweIFsVcM2EtiXu1MYX4C4VzpZQ8+I55c5DsLPcczK4wAWQogU7hhlUnRig1CsNLgpcHL3lqNUPwSl4irg1Z4W6+Zb7QLej/jWPAU4Bn9RigwHiv9yvWhXyFD8XKUoML4sr5OYdrbExQ4v+ZjhCmCPNH/keA7D/ACyvz+Y6aGLjbzYHUCRWNaXC017iJGFtys6vY/8AURn1TukVEuYdC6xxAhapBDf+mPC7KQHdxdbCsse+a6COE7hBf4f5zKIQuQ296/mn5gCAA4gvKOa5p8kIW4kton7/ACTHJDB7wE8wAGhUToallQNVR75YolCdQtDn3H8fafv41GpHyS0IihgWn+YjWQPaGmUEb61K0FQYPm/+4hQ0WtABjcLyxRnH8xKqb5Z+6gXNo4CUaXexLMAKCgjwHdRVmHxDALrIdS8MTduYRRVeTUGvC/iCCoZGKFAUt0x+o3BWo8xQMNwCvzWI7hsr9Qs48kLfXcXwBJyCn+0Psv11K+sLaq43yRheA8OP1LA6MBq4iBPmMFbZsAdrivMVrdE2PzTPxK4RWyyWaPsOolk2MM1g+R2eIACYvD3LgmobOprBUUZ+IVWhxaidbV00yZUlz3b8KBbbF5GsSn2vDCQwTYywaSmr5I1YtXvqiWODbS+4RIQw0w/lJUmFB1H7L9h+xRuqDYtAgFAP4t/9hKHiUYbCoxMPokdHvN0YUtjzwijb3mbsD8EclVpjwXwlhYFg7f3APtTheeeSABhqElDmBlcwHDcdMeCU3humjljYjUu+wLQKURrpCOH3KjdlZUaNZ8RH/lUZmm0t9yoEWvWtVjeROnHUVlhYhrWSDY8/zJgRtNjHVEuFwuz75JUPS/rfoPR9M/WrwaBZQ8CBSEpt2fFQ9+RfbYPGZidhuJjucwq5j0UWqTEUkDsUYi6oNJKAHHljWrJMK6uFZn8wudRA1lpZdR3IhELU7lfjMCPyajMpwn7gVv5heTwOWDjUJfSXcn+9BNxgjI8eOcwVfryX4a5upwbQ08X9p19G0d+lfWRME4RXRmqXEsmC74V/ufJiUbcykuoA1TKKAwxaQwvHvACiIoV7xQTxGUphnZCbrpMtErml+0wKJm2SgbYXKLD9MsXVf0mbPYga+s0Dwcee4FAaMH2nX0J1AfVPV9SUqAdSNe+SYATw1kB/M2s1A5O2EhcsMEHJKCAi1VSz2TWlitw8RBVLACXBLs1BKPMsYGU/ECQssy+xhs7rL+IY5APaUVKlpV65T/2BQHpUfu3Bb9K9H6DZAEqinw0j/UAczvahIqDQYsS2sQPCYHUZPARcl1xBM5wwK1WAJ2wylNWbuAlncrPiB1MXxKhuUKN7y/iMICkO5aHIf5D0fsMv6BuJ9LuVH6DfxW64ZnFNvGu492Oh7R6riBWZg31+4AW8Ro4F2+Sc+pT+y2LzZWA+3cGhVmj3LK9LFflVMRVccdkRll5hQJ3KsLxG2pls4qXlFqgO2Kop6ZE4gEOXTCOSvavouP2sEsmPQ9GXH6DTsQp74mXMNseO7lhuTEbrcSIFEaIinj2mJtIhjm0C4kI7MF9ASqdAJa94YUuNbrsTPeat+1I7SzdaWWwtiIIDEwKyvmKL1URTMrd2zGlwRd8wCmxZYRAcR+P16P3bv6bjr63RRY0Fey4N1bBg7uOxMTMQe6At38RhWJWF1xEdYduY4osc11KETCDSgrMLKltVKCNG451csRMoaNl54DidB8SslSOt/N8QoKADo4+zX1PpXox+ymaZg65gA8QYx0xKWY4qFFZ/ei/aCimGTBj3KYyLKsMawYSmSlDcqgIw7ZxGPIyRXZgV7ylVNB7H0X9l+i1+hj6kqV9AbkPygrZRfEspTiK3KxoYQvOW9Epw55B+pVE24DNQhQOTi4hNveDRlsU3+opSjh/0QjrK2B71gAB1GgXcNEu8tR4QzohoGGvu5f8ABqvW/R9a+ouytysKFI6QIbRu8x1JGxf2iyiMpDnuPm/qmIoComHD5hcFW3cpwEryA+UFE4EMRd2xMjxBtGjqLqHhNTUcJ7IUQ1/hc+r61D1qPoQ+i08I1MTzg8xYZzGdLC2hcUsImhXBJc5z01KnitMrswz2jFbY27hpbcZzbc6EQ4lKXib/AKppw/w3fpcv0PpuPoamH8xEgKhXaZggvqAqDflNqdS5aRBWy7zB1UMPFL4hpWE9lEPaEJS2wV5IZ5TY+c/U6+y+r9RqHpzH6DUIDQ5mORlePhmGnM411GXd/EMbilKHtFNQEYyaCMl3oj0ZmeK3FaXp3Kccfxf4eI/QahH0foNQl3b/AHCLWbnUF5h3cCwsGph5qYNJBrqcXiUJdRmLqoygSstuNKVMcwC1AGnH331fqPXn6TUIrFGW7cH5Z3ILco8o264h2lEcjnAk2YN0WPMAVnUo3dvvGDSGNRoq8SkAtgBUbeDrOAJYkQrd6a/r0qV6p9jmPqR+ghv1d/SahLhz+Ky/gEDMX6gKOr09VKf4VBAGJYGXxDqLhmBLmmG2r7SvKJjLbhV17TGxKuzUJgTsMq4o8/7ljoZvGQfDT4gE4vZ0/S6+xzH1I/QQ36Po/TZZdESW+WzKNA9nhB0A08mHuV0smmLsDkfEtdVio9y454y3AuXch+I8Y/iUNG4BoiLAY5qBKQcx91hFYXMdp8k6IlH5Yat0ae8vz9D9jn7t4+i/Rgq05alUmpRPXBtZoGXwmTi9QscNln08D/nMr2WxeJb2I2U1cCsiXZCK4V7QVmYHg1AAmIn8JoOT9h7bhucVwCgD2iUqE1UZzywoVdBYuABBHm/Wv8E9X6Oa5jRYOOWAhZ0PL/qOcF2sCV2h6XtVsDK7W15KlzlevP8AQnjPY7laO6VsenzEOL+Jf4IZlD5IN9Im11FOplb1BiwhYPH/AAXxuAlrVCaAit7l+CYTJuC+4JQwkOVEJx0dYYJi5wzj7D9k9WLMUrxMWDx3RNCXnmUzm9zxe0dswED2+l+pHBmk0kum6iX4aj758wiU0cvtvD4YDtgYBnbqOkERt56/+S2CKIx07XkNHvFpjkYwBxA4uPIiBeLhasXjM8ERJsZimUdQIF8yVAjx9oGP0m5dTeItyum2Irvh3Dgq+WOQAWbM/KYs1AgKcnxzAI1iDffrfpccITqdgMJQHKvw3h+4sCLMI4T4ieFsyrwRzdkM/wC/y0cZzEGAFGiKpWVbU854Swa6C2bgoL4NBCDMqNm5gjd+GCnJUQOYWFxXJG9PsmIJ9I+tx+pK9BzLFN90ujbkuYLk95iNCcViVgVQ63DZa/mXJwxAum+w6lVRlSvSlmHNy5naAlVQO8i9DdctS2YiUWHDaN13E2Qe1CDi/e2GyqUWk8HLwxLm2XU8IUblETqLseG/2/iEBGeqxLTZC0Q4iYjlgYWbYCuohXkGhK0E9w67PHJLJf2QLlqBp7E495cn6DEwOvKSzix7uDWvUds5quCqIh2xzXJY9Tf6QqstRrhmK1McHo1H7NBNsw5M5Vwa4MqmdQyFLyG1W8SlO2loG/z+mLAr27Vn5jXNGTpCCVY2Tz6LFNoD8mah2RNTtQ0jqVKl2VHcCKV3zMhQ+cSmFOXmAZX/ACfYFuzwbhyj1RxYV8LDPFeYAbJQPEquYMajakASswFcSi8S1x7zBB7dQS0nMZZYwbQAOVviIQdL279PDm7isOFQc5v93CUtkui7xzLxsJcdPzLcSq4GcH7g1QCzSU7O7EZUWVk9pegTxxPJLLq497IaeKIFMws5Yb1MFGcxhMBGuJlxGh4hQpY6qPcfBNKB15SjzsIIlnq9UDtY+gh2/qXMe5K52eIlOoaLqGWoKqTPoBJSAfTaXyvlBB7Mrgtbjak1gLfZG73CV/2+0Wuxuu1zGKpAaZNn4uCoBSt9wdM6gMADrqMLknuIfyuD1RuXJEF21BMAw5C/DDrQ8MHa8rNq4lq16Hdy+YsxaMSziBcwGZe41AxceZasPxG8mZtzKDU93p9vTC/CTJK+OCVw59KjiVBBk1HMqBfpxAqxjaA2kuAzCnZS9RGPalHteI3dMWlmaQtbwStnsUZL/wC1KmVglzTqUum4i8TJLIGJii+cJDOFfBEWWtXG4bZRgoeIotLRFKgpfQJtEXM0jNj2il7hDFlWN6gZgeDWIJm7nbLcBd8uZZHEM+lTiZ5QAYVUY6hqEZmZl7fXEqFIEIVVCwVYAQwUQCrKlmx0+YhWuYqV1LcT58/U4SDgQzruUr3B44gOsTwJ7IFQ9NMbiqxHqWdxq7j+UVi8zl6HUFcX4lOL4hZxEsieUGy4+lnpdIx1L9GcIATHUZz6oKzLAu+JV0Y8CLr3mDukP4nFxrDmIsrqLMiESi4wfRMw5Osw0rx6ENx1OJgI6fQ3DDcrjzMxNRYA9IyPrgcw5Gox16EZTZOfR9SNGmyIvR/MTmKiWpDzbF+SUvxmthoh3MH0rEaHaDfoyJ3K1AVcBYOkohbuXW4rhwAvdxBA5IUWouXxKslerq43FQFfXeYZjH1ajio2Lq1e0NR3TiWWbLz/AEn8MxRgg4hpPKXErma4jmCjBsmeUyfOYo3m8JoQLDMNL5hFtVBNXTqFm1QntKlqMocsHUfVVDmKyvpvMWi5dsWPR3L9ByO5cO1mcRLSaTFehND4hpPMw9EcXCLFziUWzbUwahuMV6mQzLucSxFqiFfdkpEOIAVbgAAOJlPCBfEd8Sql4g2I36WPolrcWZj0b9CAG4JimFV6MfEsZljBdRBluRxHB6IqZpcWrmPsTBLzGJuVqppK69JMQPCGos7xFHB9AsxuGdQOHcoJ0hDVvvUAMtRX8NEwHUC+vI/CkwL6gRhEluYWIu6qZpj0RY9J6MJomawX8SqqM5qKmLEDTWoIuaMua9GsuQ7fi4n0VUGKmOosUKqWowECvQBColy+YDMiscvm/wBSBXVkzzFZSr1FcJDzFY2h4zf9wb16v5g9o3iOsoNkqDTFcaTf6avKcjmCmX6qOo7IsPMMaLtR8y2SklXjOMxVHiqmaG/00hQBPwZohhuXZc0YselQ5PQZVTKhK0mYqV6eoYUewf6jKIdUwWSZBBBdKxrvCfj/AMIQW8RGrqLnLUEcx8iFJcdsoeIKcEPXEeMTBOIKNR+hTXUVyYB1FB+4SgJXRRmyu5x6Zj/9YRMnluc1wRWOYlcy2oxU4hrPoCr59IacelWeCZaZhWEmFTf+xOfkvbuEreJ5aJcUaUMZQ/JEr+ZnRLj3LuZUuGy4iZNOZtCH0UFbKmGDBq2cR+moXUbeCf5mS2T2IgLgLZxj8kcCe8VB4jxhLomFS6Zfj0Xc1iuk1HIOph5lHhAiDSvVwTFX01/yxWTojaTQZXxL+lS661ACKRnp/wCllbrmWKO+IX5l+YynFRmXlnJ4moMH0APueZY41LKj9HxLvk4iN9CeIlmsxxuIrfp5thhJYIW6jQM5iD2gK1LV6Ka5nKG8TKXFW4CwUw8TvYJ+cZCtYmzuDkQY92K2Ety2z8AfmWlNj/2VwcNPEajFVMqHuX2XL2DkjNHqtShrPYeIHyPqqH2jLeoqIFIi1aMvosfn/Eqj3Ibh+sm8xYmotkEYiqXm5msJwRwXFZbHYR8bGfapV1enxChalVhu8B+mG2JW63k/ofEffPwjK/ITWURri8xW31HOSBlZZQjgjwO2ZRUPXEim2cJTUZwei1DMWmBVyi0jkDK6Oz+YoAXFBlIlHhH+IN+wiyeJogVFU7erLqDmUzQPQoWVqdzHbK58F/1MSKHf5lgZ4ywsLeVaFXyJf5ghS29xcohP5XP+DZ8S3cOx8LmseKiUbVuVTnmIwiaia9FrmEeYhzrMrxJctvfovTFW2Nh43ANmLRwn8xHIuKN4iFqocg6f4jvyWmYCWXlnceSncdm5p6uonep7yj0FnmFjZFu/9xnRLD+Jg5h8iL8fwRMSO3Yqm9qfKxXmLAQ+6l1sPt/KKyuY9EPMc7m9Tacvsdy17dsZ4jNr4uPJEsqCiLRcyGIIK6IugKENFVU4S8+rTiKlTeoUrKH7XOFdTE3Nal5uO/b/AMQ3IjHUKq2KkqNtHOJcS816JtMioy8TyagLI4Lm/Vf7UP7gYFYP4lGXgjWCvdQPlhAAoCqNQPcsiuJarT2vXT8NMS8WQeMT+d/MRW4nb5PC8f3KXQbbTt95mC8StxCqmG64lpMuZexzTCutq4YIvmCXLj5jVxBubr4gUzDfwgEiD0GkwHw/iG9yQnjNaNCWYlEFfhG8md7P1BoSqcymfQXrcZxjYaIdAYrNysO/1lf0MEe1XCF/RFdojsmfjJpfEVz/2Q==" width="390" height="520" alt="Ảnh chân dung Nguyễn Hải Lân">
+            <figcaption><b>16</b>Hải Lân</figcaption>
+          </figure>
+      <dl class="facts">
+        <div class="fact"><dt class="lbl">Họ và tên</dt><dd>Nguyễn Hải Lân</dd></div>
+        <div class="fact"><dt class="lbl">Ngày sinh</dt><dd>10/11/2006</dd></div>
+        <div class="fact"><dt class="lbl">Giới tính</dt><dd>Nam</dd></div>
+        <div class="fact"><dt class="lbl">Đang theo học</dt><dd>Trường Đại học Ngoại thương (FTU)</dd></div>
+        <div class="fact"><dt class="lbl">Ngành</dt><dd>Kinh tế Đối ngoại, chương trình Chất lượng cao</dd></div>
+        <div class="fact"><dt class="lbl">Sở thích</dt><dd><span class="chips"><span class="chip">Đá bóng</span><span class="chip">Chơi game</span><span class="chip">Giao lưu, kết nối</span></span></dd></div>
+        <div class="fact"><dt class="lbl">Email</dt><dd><span class="email-row"><a href="mailto:lannh10112006@gmail.com" id="email-1">lannh10112006@gmail.com</a><button class="copy" type="button" data-copy="lannh10112006@gmail.com" data-target="email-1">Sao chép</button></span></dd></div>
+      </dl>
+        </div>
+      </div>
+
+      <a class="btn btn-red cta" href="#hiep-2">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#ball-sym"/></svg>
+        Ra sân hiệp 2
+      </a>
+    </div>
+
+    <div class="card-col">
+      <div class="showcase" id="showcase">
+        <canvas id="jersey3d" aria-label="Áo đấu 3D màu đỏ in tên H. Lân, số 16. Kéo ngang để xoay." role="img"></canvas>
+        <svg class="jersey-2d" viewBox="0 0 240 250" role="img" aria-label="Áo đấu màu đỏ in tên H. Lân, số 16">
+          <path d="M78 18 L100 8 Q120 26 140 8 L162 18 L224 52 L202 104 L180 94 L180 236 Q120 248 60 236 L60 94 L38 104 L16 52 Z" style="fill:var(--red);stroke:var(--ink)" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M100 8 Q120 15 140 8" fill="none" style="stroke:var(--white)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M21 58 L41 99 M219 58 L199 99" fill="none" style="stroke:var(--white)" stroke-width="5"/>
+          <text x="120" y="76" text-anchor="middle" style="fill:var(--white);font-family:var(--f-display);font-stretch:80%" font-weight="800" font-size="24" letter-spacing="2">H. LÂN</text>
+          <text x="120" y="190" text-anchor="middle" style="fill:var(--white);stroke:var(--ink);font-family:var(--f-display);font-stretch:80%" stroke-width="2.5" paint-order="stroke" font-weight="800" font-size="100">16</text>
+        </svg>
+        <div class="sc-top" aria-hidden="true"><span class="tag">Áo đấu</span><span class="sc-num">#16</span></div>
+        <span class="sc-hint" aria-hidden="true">Kéo ngang để xoay áo</span>
+      </div>
+
+      <div class="bl tilt" aria-label="Vận đơn vui: hành trình từ Chuyên Thái Bình tới Ngoại thương">
+        <div class="bl-head"><span>Vận đơn · B/L</span><span>No. K63-KTĐN</span></div>
+        <div class="bl-row"><span class="lbl">Cảng đi</span><span>THPT Chuyên Thái Bình</span></div>
+        <div class="bl-row"><span class="lbl">Cảng đến</span><span>Đại học Ngoại thương</span></div>
+        <div class="bl-row"><span class="lbl">Hàng hóa</span><span>01 sinh viên, hàng chất lượng cao</span></div>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="turf" aria-hidden="true"></div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Kinh tế Đối ngoại</span><span class="star">★</span><span>Incoterms · FOB · CIF · EXW</span><span class="star">★</span><span>Manchester United</span><span class="star">★</span><span>Hải Lân #16</span><span class="star">★</span><span>IELTS 6.5</span><span class="star">★</span><span>HSK 4</span><span class="star">★</span><span>TFT · FC Online · Valorant</span><span class="star">★</span><span>Ban Đối ngoại · Gen 20 · Gen 4</span><span class="star">★</span><span>FTU · K63</span><span class="star">★</span>
+    <span>Kinh tế Đối ngoại</span><span class="star">★</span><span>Incoterms · FOB · CIF · EXW</span><span class="star">★</span><span>Manchester United</span><span class="star">★</span><span>Hải Lân #16</span><span class="star">★</span><span>IELTS 6.5</span><span class="star">★</span><span>HSK 4</span><span class="star">★</span><span>TFT · FC Online · Valorant</span><span class="star">★</span><span>Ban Đối ngoại · Gen 20 · Gen 4</span><span class="star">★</span><span>FTU · K63</span><span class="star">★</span>
+  </div>
+</div>
+
+<!-- ================= HIỆP 2 · HỒ SƠ CHÍNH ================= -->
+<section id="hiep-2" class="stadium" aria-labelledby="hiep-2-title">
+  <div class="wrap stadium-head">
+    <p class="eyebrow"><span class="tag">Hiệp 2</span> Hồ sơ chính</p>
+    <h2 id="hiep-2-title">Chọn khung thành, sút bóng, mở hồ sơ</h2>
+    <p>Bốn khung thành là bốn phần hồ sơ của tôi. Bấm vào khung bạn muốn xem, quả bóng sẽ lo phần còn lại. Muốn xem phần khác thì quay lại sân và sút tiếp.</p>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="pitch3d" aria-hidden="true"></canvas>
+    <div class="hud" aria-hidden="true"><span class="lbl">Bàn thắng</span><b id="score">0</b><span>/ 4</span></div>
+    <div class="glabels" id="glabels">
+      <button class="glabel" type="button" data-goal="1" aria-label="Sút vào khung thành 1: Trải nghiệm với bóng đá"><span class="gl-num">Khung 01</span><span class="gl-title">Bóng đá</span><span class="gl-check" hidden>✓</span></button>
+      <button class="glabel" type="button" data-goal="2" aria-label="Sút vào khung thành 2: Thành tích học thuật"><span class="gl-num">Khung 02</span><span class="gl-title">Học thuật</span><span class="gl-check" hidden>✓</span></button>
+      <button class="glabel" type="button" data-goal="3" aria-label="Sút vào khung thành 3: Hoạt động ngoại khóa"><span class="gl-num">Khung 03</span><span class="gl-title">Ngoại khóa</span><span class="gl-check" hidden>✓</span></button>
+      <button class="glabel" type="button" data-goal="4" aria-label="Sút vào khung thành 4: Các tựa game thường chơi"><span class="gl-num">Khung 04</span><span class="gl-title">Game</span><span class="gl-check" hidden>✓</span></button>
+    </div>
+    <p class="stage-hint" aria-hidden="true">Bấm vào một khung thành để sút</p>
+  </div>
+  <p class="sr" id="score-sr" aria-live="polite">Đã mở 0 trên 4 phần hồ sơ.</p>
+  <div class="wrap stage-foot">
+    <p class="poker" id="poker" hidden>Cú poker! Bạn đã mở trọn bốn phần hồ sơ của tôi.</p>
+  </div>
+</section>
+
+<!-- ================= LIÊN HỆ ================= -->
+<div class="wrap">
+  <footer id="lien-he" class="contact">
+    <div>
+      <p class="eyebrow"><span class="tag">Hết giờ</span> Liên hệ</p>
+      <h2>Cần thêm một <em>đồng đội?</em></h2>
+      <p>Dù là một dự án, một chương trình cần đối tác hay chỉ một trận bóng cuối tuần, hãy gửi email cho tôi. Hộp thư luôn mở, kể cả trong giờ nghỉ giữa hiệp.</p>
+    </div>
+    <div class="mail-card">
+      <span class="lbl">Email</span>
+      <span class="addr" id="email-2">lannh10112006@gmail.com</span>
+      <div class="mail-actions">
+        <button class="btn btn-gold" type="button" data-copy="lannh10112006@gmail.com" data-target="email-2">Sao chép email</button>
+        <a class="btn btn-white" href="mailto:lannh10112006@gmail.com">Mở ứng dụng email</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 Nguyễn Hải Lân</span>
+      <span>Portfolio cá nhân của một cổ động viên, không liên kết chính thức với Manchester United hay các nhà phát hành game được nhắc đến.</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ================= NET PANEL ================= -->
+<dialog class="net" id="net" aria-labelledby="net-title">
+  <div class="goalframe">
+    <span class="post post-l" aria-hidden="true"></span>
+    <span class="post post-r" aria-hidden="true"></span>
+    <span class="crossbar" aria-hidden="true"></span>
+    <div class="net-inner">
+      <div class="net-bar">
+        <span class="tag" id="net-tag">Vào! Khung 01</span>
+        <button class="btn btn-red" type="button" id="net-close">← Về sân để sút tiếp</button>
+      </div>
+      <div class="net-body" id="net-body"></div>
+    </div>
+    <div class="net-turf" aria-hidden="true"></div>
+  </div>
+</dialog>
+
+<template id="tpl-1">
+  <article class="sheet">
+    <span class="lbl">Khung thành 01</span>
+    <h3 class="p-title" id="net-title">Trải nghiệm với bóng đá</h3>
+    <p class="p-lede">Với tôi, bóng đá không chỉ gói gọn trong chín mươi phút trên sân mà đã trở thành một phần của cá tính. Cầu thủ tôi yêu thích nhất là một thủ môn, nên cũng dễ hiểu vì sao portfolio này có tới bốn khung thành.</p>
+    <div class="fav-grid">
+      <div class="fav">
+        <span class="art art-md"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M17 14 Q32 4 47 14 L43 21 Q32 14 21 21 Z"/><rect class="fr" x="17" y="19" width="12" height="33" rx="2"/><rect class="fw ns" x="18.2" y="27" width="9.6" height="4"/><rect class="fw ns" x="18.2" y="38" width="9.6" height="4"/><rect x="17" y="19" width="12" height="33" rx="2" fill="none"/><rect class="fr" x="35" y="19" width="12" height="33" rx="2"/><rect class="fw ns" x="36.2" y="27" width="9.6" height="4"/><rect class="fw ns" x="36.2" y="38" width="9.6" height="4"/><rect x="35" y="19" width="12" height="33" rx="2" fill="none"/><path d="M19.5 52 v6 M23 52 v6 M26.5 52 v6 M37.5 52 v6 M41 52 v6 M44.5 52 v6" fill="none"/></svg></span>
+        <span class="lbl">Câu lạc bộ</span>
+        <span class="k-head fav-v">Manchester United</span>
+        <span class="fav-n">Tôi trung thành qua mọi mùa giải, kể cả những mùa đòi hỏi người hâm mộ phải rèn luyện thêm sự kiên nhẫn.</span>
+      </div>
+      <div class="fav">
+        <span class="art art-md"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M14 10 Q25 6 36 10 T58 10 V36 Q47 40 36 36 T14 36 Z"/><path class="fg ns" d="M14 16.5 Q25 12.5 36 16.5 T58 16.5 V29.5 Q47 33.5 36 29.5 T14 29.5 Z"/><path d="M14 10 Q25 6 36 10 T58 10 V36 Q47 40 36 36 T14 36 Z" fill="none"/><rect class="fw" x="9" y="6" width="5" height="52" rx="2.5"/><circle class="fg" cx="11.5" cy="6" r="3"/></svg></span>
+        <span class="lbl">Đội tuyển quốc gia</span>
+        <span class="k-head fav-v">Tây Ban Nha</span>
+        <span class="fav-n">Biệt danh của đội là La Roja, nghĩa là Màu Đỏ. Có lẽ tình yêu của tôi với sắc đỏ không phải chuyện ngẫu nhiên.</span>
+      </div>
+      <div class="fav">
+        <span class="art art-md"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><g><rect class="fn" x="7" y="11" width="5.5" height="22" rx="2.75"/><rect class="fn" x="12.5" y="7" width="5.5" height="24" rx="2.75"/><rect class="fn" x="18" y="8" width="5.5" height="24" rx="2.75"/><rect class="fn" x="23.5" y="12" width="5" height="20" rx="2.5"/><rect class="fn" x="25.5" y="25" width="5.5" height="14" rx="2.75" transform="rotate(35 28 32)"/><rect class="fn" x="7" y="24" width="22" height="19" rx="5"/><rect class="fg" x="8" y="42" width="20" height="11" rx="2.5"/></g><g transform="translate(64 0) scale(-1 1)"><rect class="fn" x="7" y="11" width="5.5" height="22" rx="2.75"/><rect class="fn" x="12.5" y="7" width="5.5" height="24" rx="2.75"/><rect class="fn" x="18" y="8" width="5.5" height="24" rx="2.75"/><rect class="fn" x="23.5" y="12" width="5" height="20" rx="2.5"/><rect class="fn" x="25.5" y="25" width="5.5" height="14" rx="2.75" transform="rotate(35 28 32)"/><rect class="fn" x="7" y="24" width="22" height="19" rx="5"/><rect class="fg" x="8" y="42" width="20" height="11" rx="2.5"/></g></svg></span>
+        <span class="lbl">Cầu thủ yêu thích</span>
+        <span class="k-head fav-v">David de Gea</span>
+        <span class="fav-n">Người gác đền mà tôi luôn dành trọn sự ngưỡng mộ.</span>
+      </div>
+    </div>
+    <div class="moments">
+      <div class="moment up">
+        <span class="art art-lg"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M19 14 C5 14 7 32 23 32" fill="none" style="stroke-width:7"/><path d="M19 14 C5 14 7 32 23 32" fill="none" style="stroke:var(--gold);stroke-width:3"/><path d="M45 14 C59 14 57 32 41 32" fill="none" style="stroke-width:7"/><path d="M45 14 C59 14 57 32 41 32" fill="none" style="stroke:var(--gold);stroke-width:3"/><path class="fg" d="M17 8 H47 V20 Q47 36 32 38 Q17 36 17 20 Z"/><path d="M23 13 V21 Q23 29 28 32" fill="none" style="stroke:var(--white);stroke-width:2.5"/><rect class="fg" x="28.5" y="37.5" width="7" height="8"/><path class="fr" d="M21 45 H43 L45 56 H19 Z"/><rect class="fg" x="27" y="48" width="10" height="4" rx="1"/><rect class="fr ns" x="5" y="43" width="4" height="4" transform="rotate(20 7 45)"/><rect class="fs ns" x="54" y="40" width="4" height="4" transform="rotate(-25 56 42)"/><circle class="fr ns" cx="55" cy="6" r="2"/><circle class="fs ns" cx="8" cy="8" r="2"/><rect class="fn ns" x="51" y="52" width="4" height="4" transform="rotate(30 53 54)"/></svg></span>
+        <span class="lbl">▲ Khoảnh khắc vui nhất</span>
+        <h4 class="k-head">Cùng MU nâng cúp</h4>
+        <p>Niềm vui khiến mọi mùa giải chờ đợi đều trở nên xứng đáng.</p>
+      </div>
+      <div class="moment down">
+        <span class="art art-lg"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fs" d="M17 27 Q9 27 9 21 Q10 14 18 15 Q20 7 30 7 Q38 8 40 13 Q48 11 51 18 Q53 27 45 27 Z"/><path d="M21 32 l-3 6 M31 32 l-3 6 M41 32 l-3 6" fill="none" style="stroke:var(--sky-1);stroke-width:3"/><path d="M17 43 V60 M22 43 V60 M27 43 V60 M32 43 V60 M37 43 V60 M42 43 V60 M47 43 V60 M12 48 H52 M12 53 H52" fill="none" style="stroke-width:.8;opacity:.4"/><path d="M12 60 V43 H52 V60" fill="none" style="stroke-width:3.5"/><circle class="fw" cx="22" cy="56" r="4.5"/><circle class="fk ns" cx="22" cy="56" r="1.6"/></svg></span>
+        <span class="lbl">▼ Khoảnh khắc buồn nhất</span>
+        <h4 class="k-head">Chung kết C2 mùa giải 2020–2021</h4>
+        <p>Trận chung kết UEFA Europa League mà đến giờ tôi vẫn chưa đủ can đảm xem lại.</p>
+      </div>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-2">
+  <article class="sheet">
+    <span class="lbl">Khung thành 02</span>
+    <h3 class="p-title" id="net-title">Thành tích học thuật</h3>
+    <p class="p-lede">Hành trình học tập của tôi đi từ một ngôi trường chuyên giàu truyền thống tới giảng đường Ngoại thương, nơi kinh tế, thương mại và ngoại ngữ cùng ra sân.</p>
+    <ol class="transfers">
+      <li><span class="art art-sm"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><rect class="fw" x="12" y="26" width="40" height="28"/><path class="fr" d="M8 28 L32 13 L56 28 Z"/><rect class="fk" x="28" y="40" width="8" height="14"/><rect class="fs" x="17" y="32" width="7" height="7"/><rect class="fs" x="40" y="32" width="7" height="7"/><path d="M32 13 V4" fill="none"/><path class="fg" d="M32 4 H41 L38 7 L41 10 H32 Z"/><path d="M6 54 H58" fill="none"/></svg></span><div class="t-text"><span class="lbl">Thời phổ thông</span><strong class="k-head">Trường THPT Chuyên Thái Bình</strong><span>Cựu học sinh</span></div></li>
+      <li class="now"><span class="art art-sm"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M8 22 L32 8 L56 22 Z"/><rect class="fw" x="10" y="22" width="44" height="6"/><rect class="fw" x="14" y="28" width="6" height="19"/><rect class="fw" x="24" y="28" width="6" height="19"/><rect class="fw" x="34" y="28" width="6" height="19"/><rect class="fw" x="44" y="28" width="6" height="19"/><rect class="fg" x="8" y="47" width="48" height="7"/><path d="M4 58 H60" fill="none"/><circle class="fg" cx="32" cy="16.5" r="2.5"/></svg></span><div class="t-text"><span class="lbl">Hiện tại</span><strong class="k-head">Trường Đại học Ngoại thương (FTU)</strong><span>Sinh viên K63, chương trình Chất lượng cao Kinh tế Đối ngoại</span></div></li>
+    </ol>
+    <div class="stats">
+      <div class="stat">
+        <span class="art art-sm"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M18 29 V41 Q32 49 46 41 V29 L32 34 Z"/><path class="fk" d="M5 24 L32 13 L59 24 L32 35 Z"/><path d="M32 24 L50 28 V42" fill="none" style="stroke:var(--gold);stroke-width:2.5"/><circle class="fg" cx="32" cy="24" r="2.5"/><path class="fg" d="M47 42 H53 L54 50 H46 Z"/></svg></span>
+        <span class="lbl">GPA hiện tại</span>
+        <span class="s-v">3.x</span>
+        <span class="s-n">Chữ số x hiện vẫn đang ở cấp tiểu học, nhưng tôi đã cam kết sẽ sớm cho nó lên lớp.</span>
+      </div>
+      <div class="stat">
+        <span class="art art-sm"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fw" d="M10 10 H54 Q58 10 58 14 V40 Q58 44 54 44 H30 L19 54 V44 H10 Q6 44 6 40 V14 Q6 10 10 10 Z"/><text class="fr ns" x="32" y="34" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="19">EN</text></svg></span>
+        <span class="lbl">IELTS</span>
+        <span class="s-v">6.5</span>
+        <span class="s-n">Chứng chỉ năng lực tiếng Anh quốc tế.</span>
+      </div>
+      <div class="stat">
+        <span class="art art-sm"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fg" d="M10 10 H54 Q58 10 58 14 V40 Q58 44 54 44 H30 L19 54 V44 H10 Q6 44 6 40 V14 Q6 10 10 10 Z"/><rect x="21" y="19" width="22" height="13" rx="1" fill="none" style="stroke-width:3.5"/><path d="M32 13 V40" fill="none" style="stroke-width:3.5"/></svg></span>
+        <span class="lbl">Tiếng Trung</span>
+        <span class="s-v">HSK 4</span>
+        <span class="s-n">Tôi đang theo học tiếng Trung ở trình độ HSK 4.</span>
+      </div>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-3">
+  <article class="sheet">
+    <span class="lbl">Khung thành 03</span>
+    <h3 class="p-title" id="net-title">Hoạt động ngoại khóa</h3>
+    <p class="p-lede">Hai chữ "đối ngoại" dường như đã theo tôi từ trường chuyên lên tận giảng đường đại học. Ở cả hai cộng đồng, hành trình của tôi đều bắt đầu từ vị trí thành viên và khép lại bằng chiếc băng đội trưởng Ban Đối ngoại.</p>
+    <div class="clubs">
+      <section class="club">
+        <div class="club-head"><div><span class="lbl">Sân nhà Thái Bình</span>
+        <h4 class="k-head">Cộng đồng Chuyên Thái Bình</h4></div><span class="art art-md"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fw" d="M13 5 H40 L50 15 V59 H13 Z"/><path class="fs" d="M40 5 V15 H50 Z"/><path d="M19 22 H43 M19 29 H43 M19 36 H33" fill="none"/><circle class="fr" cx="37" cy="48" r="7.5"/><path class="fg ns" d="M37 43.2 l1.5 3.1 3.4 .5 -2.5 2.4 .6 3.4 -3 -1.6 -3 1.6 .6 -3.4 -2.5 -2.4 3.4 -.5 z"/><path class="fg" d="M48 27 L57 36 L45 49 L40 50 L41 45 Z"/></svg></span></div>
+        <div class="promo">
+          <span class="pr"><span class="lbl">Gen 19</span>Thành viên Ban Đối ngoại</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="pr cap"><span class="lbl">Gen 20</span>Trưởng Ban Đối ngoại<span class="armband" aria-hidden="true">C</span></span>
+        </div>
+        <dl class="club-dl">
+          <dt class="lbl">Chương trình</dt>
+          <dd>Tư vấn Tuyển sinh; Giải bóng đá các thế hệ cựu học sinh Chuyên Thái Bình.</dd>
+          <dt class="lbl">Tài trợ</dt>
+          <dd>Kêu gọi thành công các nhà tài trợ, tiêu biểu là IVY IELTS Thái Bình và ZORBA Thái Bình.</dd>
+          <dt class="lbl">Hợp tác</dt>
+          <dd>
+            Ký kết hợp đồng hợp tác cho chương trình Tư vấn Tuyển sinh với các đơn vị:
+            <ul class="signed">
+              <li>VinUni</li>
+              <li>Trường Đại học Thương mại</li>
+              <li>Khoa Marketing, Đại học Kinh tế Quốc dân</li>
+              <li>Trường Đại học Giao thông Vận tải</li>
+              <li>Đại học Phenikaa</li>
+            </ul>
+            <span class="club-stamp">Đã ký · 05 đối tác</span>
+          </dd>
+        </dl>
+      </section>
+      <section class="club">
+        <div class="club-head"><div><span class="lbl">Sân nhà Ngoại thương</span>
+        <h4 class="k-head">Cộng đồng Sinh viên CLC Kinh tế Đối ngoại, Trường Đại học Ngoại thương</h4></div><span class="art art-md"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M7 58 L19 27 L38 46 Z"/><path class="fg ns" d="M13 42.5 L15.4 36.3 L28.7 49.6 L22.5 52 Z"/><path d="M7 58 L19 27 L38 46 Z" fill="none"/><ellipse class="fg" cx="28.5" cy="36.5" rx="13.5" ry="4.5" transform="rotate(45 28.5 36.5)"/><path d="M30 24 Q33 13 42 14" fill="none" style="stroke:var(--red);stroke-width:3"/><path d="M40 31 Q49 28 50 19" fill="none" style="stroke:var(--grass-1);stroke-width:3"/><circle class="fg" cx="46" cy="9" r="3"/><circle class="fs" cx="56" cy="24" r="3"/><rect class="fr" x="34" y="6" width="5" height="5" transform="rotate(20 36.5 8.5)"/><rect class="fn" x="53" y="38" width="5" height="5" transform="rotate(-20 55.5 40.5)"/></svg></span></div>
+        <div class="promo">
+          <span class="pr"><span class="lbl">Gen 3</span>Thành viên Ban Đối ngoại</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="pr cap"><span class="lbl">Gen 4</span>Trưởng Ban Đối ngoại<span class="armband" aria-hidden="true">C</span></span>
+        </div>
+        <dl class="club-dl">
+          <dt class="lbl">Chương trình</dt>
+          <dd>Reunion Day; PROM.</dd>
+        </dl>
+      </section>
+    </div>
+  </article>
+</template>
+
+<template id="tpl-4">
+  <article class="sheet">
+    <span class="lbl">Khung thành 04</span>
+    <h3 class="p-title" id="net-title">Các tựa game thường chơi</h3>
+    <p class="p-lede">Khi không ở trên giảng đường hay sân bóng, tôi rèn tư duy chiến thuật và tinh thần đồng đội ở một sân chơi khác. Danh sách dưới đây xếp theo thứ tự trong hồ sơ, không theo số giờ chơi.</p>
+    <ul class="games">
+      <li class="game">
+        <span class="art g-slot" aria-hidden="true"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fg" d="M20 23 L22 10 L28 16 L32 7 L36 16 L42 10 L44 23 Z"/><polygon class="fn" points="23.34,28 32,33 32,43 23.34,48 14.68,43 14.68,33"/><polygon class="fs" points="40.66,28 49.32,33 49.32,43 40.66,48 32,43 32,33"/><polygon class="fr" points="32,43 40.66,48 40.66,58 32,63 23.34,58 23.34,48"/></svg></span>
+        <span class="g-name"><strong class="k-head">Đấu Trường Chân Lý</strong><span class="lbl">TFT · Chiến thuật</span></span>
+        <p>Phân bổ nguồn lực hữu hạn để tối đa hóa kết quả. Xét cho cùng, đây cũng là kinh tế học ứng dụng.</p>
+      </li>
+      <li class="game">
+        <span class="art g-slot" aria-hidden="true"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fw" d="M14 30 Q14 23 21 23 H43 Q50 23 50 30 L55 46 Q56 52 50 52 Q46 52 43 46 H21 Q18 52 14 52 Q8 52 9 46 Z"/><path class="fk ns" d="M19 32 h4 v-4 h3 v4 h4 v3 h-4 v4 h-3 v-4 h-4 z"/><circle class="fr" cx="41" cy="31" r="2.6"/><circle class="fg" cx="46" cy="36" r="2.6"/><circle class="fw" cx="50" cy="12" r="8"/><polygon class="fk ns" points="50,8 53.8,10.8 52.35,15.24 47.65,15.24 46.2,10.8"/></svg></span>
+        <span class="g-name"><strong class="k-head">FC Online</strong><span class="lbl">Bóng đá</span></span>
+        <p>Những hôm trời mưa không ra sân được, sân cỏ vẫn luôn ở ngay trong máy.</p>
+      </li>
+      <li class="game">
+        <span class="art g-slot" aria-hidden="true"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><circle class="fw" cx="32" cy="32" r="21"/><circle class="fr" cx="32" cy="32" r="13"/><circle class="fw" cx="32" cy="32" r="5"/><path d="M32 3 V15 M32 49 V61 M3 32 H15 M49 32 H61" fill="none" style="stroke-width:3"/></svg></span>
+        <span class="g-name"><strong class="k-head">Valorant</strong><span class="lbl">Bắn súng chiến thuật</span></span>
+        <p>Phối hợp và giao tiếp với đồng đội trong từng giây, một kỹ năng mềm đòi hỏi phản xạ rất nhanh.</p>
+      </li>
+      <li class="game">
+        <span class="art g-slot" aria-hidden="true"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><g transform="rotate(45 32 32)"><path class="fw" d="M32 4 L36 10 V40 H28 V10 Z"/><rect class="fg" x="22" y="40" width="20" height="5" rx="2"/><rect class="fr" x="29.5" y="45" width="5" height="10" rx="1.5"/><circle class="fg" cx="32" cy="57.5" r="3"/></g><g transform="rotate(-45 32 32)"><path class="fw" d="M32 4 L36 10 V40 H28 V10 Z"/><rect class="fg" x="22" y="40" width="20" height="5" rx="2"/><rect class="fr" x="29.5" y="45" width="5" height="10" rx="1.5"/><circle class="fg" cx="32" cy="57.5" r="3"/></g></svg></span>
+        <span class="g-name"><strong class="k-head">Liên Quân Mobile</strong><span class="lbl">MOBA 5v5</span></span>
+        <p>Năm người, một mục tiêu chung. Bài học làm việc nhóm kinh điển nhất.</p>
+      </li>
+      <li class="game">
+        <span class="art g-slot" aria-hidden="true"><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M7 28 Q7 7 32 7 Q57 7 57 28 Q51 24 44.5 28 Q38 24 32 28 Q26 24 19.5 28 Q13 24 7 28 Z"/><path class="fg" d="M25.5 27 Q25 10 32 7 Q39 10 38.5 27 Q35 24.5 32 28 Q29 24.5 25.5 27 Z"/><path d="M7 28 L28 45 M19.5 28 L30 45 M44.5 28 L34 45 M57 28 L36 45" fill="none"/><rect class="fg" x="25" y="44" width="14" height="13" rx="1.5"/><path d="M25 44 L39 57 M39 44 L25 57" fill="none" style="stroke-width:1.6"/></svg></span>
+        <span class="g-name"><strong class="k-head">PUBG Mobile</strong><span class="lbl">Sinh tồn</span></span>
+        <p>Thực hành quản trị rủi ro mỗi khi vòng bo bắt đầu thu hẹp.</p>
+      </li>
+    </ul>
+  </article>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const has3D = (() => {
+    if (!window.THREE) return false;
+    try { const c = document.createElement('canvas'); return !!(c.getContext('webgl') || c.getContext('experimental-webgl')); }
+    catch (e) { return false; }
+  })();
+  const fontsReady = (document.fonts && document.fonts.load)
+    ? Promise.all([document.fonts.load('800 40px Archivo'), document.fonts.ready]).catch(() => {})
+    : Promise.resolve();
+  const titles = ['Bóng đá', 'Học thuật', 'Ngoại khóa', 'Game'];
+  const pad = n => String(n).padStart(2, '0');
+
+  /* ---------------- Copy email ---------------- */
+  document.querySelectorAll('button[data-copy]').forEach(btn => {
+    const label = btn.textContent;
+    btn.addEventListener('click', () => {
+      const done = msg => { btn.textContent = msg; setTimeout(() => { btn.textContent = label; }, 1800); };
+      const fallback = () => {
+        const el = document.getElementById(btn.dataset.target);
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel.removeAllRanges(); sel.addRange(range);
+        done('Đã chọn, nhấn Ctrl+C');
+      };
+      try { navigator.clipboard.writeText(btn.dataset.copy).then(() => done('Đã sao chép'), fallback); }
+      catch (e) { fallback(); }
+    });
+  });
+
+  /* ---------------- Tilt cards ---------------- */
+  if (!reduce && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.tilt').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(900px) rotateX(${(-y * 9).toFixed(2)}deg) rotateY(${(x * 11).toFixed(2)}deg)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ---------------- Shared canvas helpers ---------------- */
+  function kitCanvas(side) {
+    const W = 1024, H = Math.round(1024 * 250 / 240);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    g.scale(W / 240, H / 250);
+    g.fillStyle = '#DA291C'; g.fillRect(0, 0, 240, 250);
+    const sh = g.createRadialGradient(120, 95, 10, 120, 120, 150);
+    sh.addColorStop(0, 'rgba(255,255,255,.10)'); sh.addColorStop(1, 'rgba(90,0,0,.30)');
+    g.fillStyle = sh; g.fillRect(0, 0, 240, 250);
+    g.strokeStyle = 'rgba(120,10,5,.14)'; g.lineWidth = .6;
+    for (let x = -250; x < 250; x += 4) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x + 250, 250); g.stroke(); }
+    g.fillStyle = 'rgba(110,6,2,.32)'; g.fillRect(60, 94, 9, 145); g.fillRect(171, 94, 9, 145);
+    g.strokeStyle = '#FFFFFF'; g.lineWidth = 5;
+    g.beginPath(); g.moveTo(20, 57); g.lineTo(41, 101); g.moveTo(220, 57); g.lineTo(199, 101); g.stroke();
+    g.lineCap = 'round';
+    const collar = new Path2D(side === 'back' ? 'M100 8 Q120 15 140 8' : 'M100 8 Q120 30 140 8');
+    g.strokeStyle = '#1B1214'; g.lineWidth = 9; g.stroke(collar);
+    g.strokeStyle = '#FFFFFF'; g.lineWidth = 5; g.stroke(collar);
+    g.textAlign = 'center';
+    if ('fontStretch' in g) g.fontStretch = 'condensed';
+    if (side === 'back') {
+      if ('letterSpacing' in g) g.letterSpacing = '2px';
+      g.font = '800 24px Archivo, "Arial Narrow", sans-serif';
+      g.fillStyle = '#FFFFFF'; g.fillText('H. LÂN', 120, 74);
+      if ('letterSpacing' in g) g.letterSpacing = '0px';
+      g.font = '800 98px Archivo, "Arial Narrow", sans-serif';
+      g.lineJoin = 'round'; g.lineWidth = 3; g.strokeStyle = 'rgba(27,18,20,.55)';
+      g.strokeText('16', 121.5, 189.5);
+      g.fillStyle = '#FFFFFF'; g.fillText('16', 120, 188);
+    } else {
+      g.font = '800 20px Archivo, sans-serif';
+      g.fillStyle = '#FFFFFF'; g.fillText('16', 150, 74);
+    }
+    return c;
+  }
+  const P = (x, y) => [(x - 120) / 100, (125 - y) / 100];
+  function shirtShape() {
+    const s = new THREE.Shape();
+    s.moveTo(...P(78, 18)); s.lineTo(...P(100, 8)); s.quadraticCurveTo(...P(120, 26), ...P(140, 8));
+    s.lineTo(...P(162, 18)); s.lineTo(...P(224, 52)); s.lineTo(...P(202, 104)); s.lineTo(...P(180, 94));
+    s.lineTo(...P(180, 236)); s.quadraticCurveTo(...P(120, 248), ...P(60, 236)); s.lineTo(...P(60, 94));
+    s.lineTo(...P(38, 104)); s.lineTo(...P(16, 52)); s.closePath();
+    return s;
+  }
+  function radialShadow() {
+    const c = document.createElement('canvas'); c.width = c.height = 128;
+    const g = c.getContext('2d');
+    const rg = g.createRadialGradient(64, 64, 4, 64, 64, 62);
+    rg.addColorStop(0, 'rgba(0,0,0,.5)'); rg.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, 128, 128);
+    return new THREE.CanvasTexture(c);
+  }
+  // Runs fn every frame while el is on screen.
+  function loopWhileVisible(el, fn) {
+    let visible = false, running = false, last = performance.now();
+    const tick = now => {
+      if (!visible) { running = false; return; }
+      const dt = Math.min((now - last) / 1000, 0.05); last = now;
+      fn(now / 1000, dt);
+      requestAnimationFrame(tick);
+    };
+    new IntersectionObserver(es => {
+      visible = es[0].isIntersecting;
+      if (visible && !running) { running = true; last = performance.now(); requestAnimationFrame(tick); }
+    }, { threshold: 0.01 }).observe(el);
+  }
+
+  /* ---------------- 3D shirt ---------------- */
+  function initJersey() {
+    const box = document.getElementById('showcase');
+    const canvas = document.getElementById('jersey3d');
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); }
+    catch (e) { box.classList.add('no3d'); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+    camera.position.set(0, 0.6, 7.4);
+    camera.lookAt(0, -0.2, 0);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x2f8f45, 0.85));
+    const key = new THREE.DirectionalLight(0xffffff, 0.7); key.position.set(3, 4, 6); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xFBE122, 0.5); rim.position.set(-5, 2, -4); scene.add(rim);
+
+    const shape = shirtShape();
+    const depth = 0.2, bevT = 0.09;
+    const bodyGeo = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelThickness: bevT, bevelSize: 0.05, bevelSegments: 5, curveSegments: 24 });
+    bodyGeo.translate(0, 0, -depth / 2);
+    const jersey = new THREE.Group();
+    jersey.add(new THREE.Mesh(bodyGeo, new THREE.MeshStandardMaterial({ color: 0xC21D12, roughness: 0.6 })));
+
+    const decalGeo = new THREE.ShapeGeometry(shape, 24);
+    const pos = decalGeo.attributes.position, uv = decalGeo.attributes.uv;
+    for (let i = 0; i < pos.count; i++) uv.setXY(i, (pos.getX(i) * 100 + 120) / 240, (125 + pos.getY(i) * 100) / 250);
+    const aniso = renderer.capabilities.getMaxAnisotropy();
+    const texBack = new THREE.CanvasTexture(kitCanvas('back'));
+    const texFront = new THREE.CanvasTexture(kitCanvas('front'));
+    texBack.anisotropy = texFront.anisotropy = aniso;
+    const zFace = depth / 2 + bevT + 0.003;
+    const back = new THREE.Mesh(decalGeo, new THREE.MeshStandardMaterial({ map: texBack, roughness: 0.62 }));
+    back.position.z = zFace; jersey.add(back);
+    const front = new THREE.Mesh(decalGeo, new THREE.MeshStandardMaterial({ map: texFront, roughness: 0.62 }));
+    front.position.z = -zFace; front.rotation.y = Math.PI; jersey.add(front);
+    scene.add(jersey);
+    fontsReady.then(() => {
+      texBack.image = kitCanvas('back'); texBack.needsUpdate = true;
+      texFront.image = kitCanvas('front'); texFront.needsUpdate = true;
+    });
+
+    // Turf podium
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256;
+    const gg = gc.getContext('2d');
+    for (let i = 0; i < 8; i++) { gg.fillStyle = i % 2 ? '#35A14D' : '#3FAD57'; gg.fillRect(i * 32, 0, 32, 256); }
+    for (let i = 0; i < 1800; i++) { gg.fillStyle = Math.random() < .5 ? 'rgba(10,70,25,.14)' : 'rgba(255,255,255,.07)'; gg.fillRect(Math.random() * 256, Math.random() * 256, 1.5, 2.5); }
+    gg.strokeStyle = 'rgba(255,255,255,.92)'; gg.lineWidth = 6;
+    gg.beginPath(); gg.arc(128, 128, 106, 0, Math.PI * 2); gg.stroke();
+    const top = new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(gc), roughness: .95 });
+    const side = new THREE.MeshStandardMaterial({ color: 0x1D7A37, roughness: .9 });
+    const podium = new THREE.Mesh(new THREE.CylinderGeometry(1.55, 1.68, 0.26, 72), [side, top, side]);
+    podium.position.y = -1.66; scene.add(podium);
+    const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.0), new THREE.MeshBasicMaterial({ map: radialShadow(), transparent: true, depthWrite: false }));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = -1.66 + 0.135; scene.add(shadow);
+
+    // Drag to rotate
+    let drag = 0, vel = 0, dragging = false, lastX = 0;
+    canvas.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; vel = 0; canvas.setPointerCapture(e.pointerId); canvas.classList.add('grabbing'); });
+    canvas.addEventListener('pointermove', e => { if (!dragging) return; const dx = (e.clientX - lastX) * 0.012; lastX = e.clientX; drag += dx; vel = dx; });
+    const end = () => { dragging = false; canvas.classList.remove('grabbing'); };
+    canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+
+    const size = () => {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    };
+    new ResizeObserver(size).observe(canvas); size();
+
+    loopWhileVisible(canvas, (t) => {
+      if (!dragging) {
+        if (Math.abs(vel) > 0.0004) { drag += vel; vel *= 0.94; }
+        else { drag = Math.atan2(Math.sin(drag), Math.cos(drag)) * 0.985; }
+      }
+      const idle = reduce ? -0.3 : Math.sin(t * 0.55) * 0.5 - 0.15;
+      const bob = reduce ? 0 : Math.sin(t * 1.5) * 0.07;
+      jersey.rotation.y = idle + drag;
+      jersey.rotation.z = reduce ? 0 : Math.sin(t * 0.9) * 0.025;
+      jersey.position.y = 0.12 + bob;
+      shadow.scale.setScalar(1 - bob * 1.4);
+      renderer.render(scene, camera);
+    });
+  }
+
+  /* ---------------- Panel (shared by 3D and fallback) ---------------- */
+  const stage = document.getElementById('stage');
+  const labels = [...document.querySelectorAll('.glabel')];
+  const dlg = document.getElementById('net');
+  const body = document.getElementById('net-body');
+  const tag = document.getElementById('net-tag');
+  const scoreEl = document.getElementById('score');
+  const scoreSr = document.getElementById('score-sr');
+  const poker = document.getElementById('poker');
+  const scored = new Set();
+  let busy = false, current = null, pitch = null;
+
+  function markScored(n) {
+    scored.add(n);
+    labels[n - 1].classList.add('scored');
+    labels[n - 1].querySelector('.gl-check').hidden = false;
+    scoreEl.textContent = scored.size;
+    scoreSr.textContent = `Đã mở ${scored.size} trên 4 phần hồ sơ.`;
+    if (scored.size === 4) poker.hidden = false;
+    if (pitch) pitch.paintGoals();
+  }
+
+  function burstAt(pageX, pageY) {
+    const el = document.createElement('div');
+    el.className = 'burst';
+    el.style.left = pageX + 'px'; el.style.top = pageY + 'px';
+    el.innerHTML = '<span class="burst-text">VÀO!</span>';
+    if (!reduce) {
+      for (let i = 0; i < 20; i++) {
+        const c = document.createElement('span');
+        c.className = 'cf c' + ((i % 4) + 1);
+        el.appendChild(c);
+        const ang = (-165 + Math.random() * 150) * Math.PI / 180, dist = 60 + Math.random() * 100;
+        c.animate([
+          { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+          { transform: `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist + 80}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+        ], { duration: 900 + Math.random() * 400, easing: 'cubic-bezier(.2,.7,.4,1)', fill: 'forwards' });
+      }
+    }
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1500);
+  }
+
+  function rectFor(n) { return pitch ? pitch.goalRect(n) : labels[n - 1].getBoundingClientRect(); }
+
+  function openNet(n) {
+    current = n;
+    body.replaceChildren(document.getElementById('tpl-' + n).content.cloneNode(true));
+    body.scrollTop = 0;
+    tag.textContent = `Vào! Khung ${pad(n)} · ${titles[n - 1]}`;
+    dlg.showModal();
+    document.getElementById('net-close').focus();
+    if (!reduce) {
+      const from = rectFor(n), to = dlg.getBoundingClientRect();
+      const s = Math.max(from.width / to.width, 0.08);
+      const dx = (from.left + from.width / 2) - (to.left + to.width / 2);
+      const dy = from.bottom - to.bottom;
+      dlg.animate([
+        { transform: `perspective(1100px) translate(${dx}px, ${dy}px) scale(${s}) rotateX(65deg)`, opacity: .2 },
+        { transform: 'perspective(1100px) translate(0,0) scale(1) rotateX(0deg)', opacity: 1 }
+      ], { duration: 560, easing: 'cubic-bezier(.2,.85,.25,1)' });
+    }
+  }
+
+  function closeNet() {
+    if (!dlg.open) return;
+    const n = current;
+    const finish = () => {
+      dlg.close();
+      if (pitch) pitch.resetBall();
+      busy = false; stage.classList.remove('busy'); current = null;
+      labels[n - 1].focus({ preventScroll: true });
+    };
+    if (reduce) { finish(); return; }
+    const from = dlg.getBoundingClientRect(), to = rectFor(n);
+    const s = Math.max(to.width / from.width, 0.08);
+    const dx = (to.left + to.width / 2) - (from.left + from.width / 2);
+    const dy = to.bottom - from.bottom;
+    const anim = dlg.animate([
+      { transform: 'perspective(1100px) translate(0,0) scale(1) rotateX(0deg)', opacity: 1 },
+      { transform: `perspective(1100px) translate(${dx}px, ${dy}px) scale(${s}) rotateX(65deg)`, opacity: 0 }
+    ], { duration: 360, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' });
+    anim.finished.then(() => { finish(); anim.cancel(); });
+  }
+
+  function shoot(n) {
+    if (busy || dlg.open) return;
+    busy = true; stage.classList.add('busy');
+    if (pitch && !reduce) {
+      pitch.shoot(n, (pageX, pageY) => {
+        burstAt(pageX, pageY);
+        markScored(n);
+        setTimeout(() => openNet(n), 900);
+      });
+    } else {
+      markScored(n);
+      openNet(n);
+    }
+  }
+
+  labels.forEach((b, i) => {
+    b.addEventListener('click', () => shoot(i + 1));
+    b.addEventListener('pointerenter', () => pitch && pitch.setHover(i + 1));
+    b.addEventListener('pointerleave', () => pitch && pitch.setHover(0));
+  });
+  document.getElementById('net-close').addEventListener('click', closeNet);
+  dlg.addEventListener('cancel', e => { e.preventDefault(); closeNet(); });
+  dlg.addEventListener('click', e => { if (e.target === dlg) closeNet(); });
+
+  /* ---------------- 3D stadium ---------------- */
+  function initPitch() {
+    const canvas = document.getElementById('pitch3d');
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); }
+    catch (e) { return null; }
+    const small = Math.min(window.innerWidth, window.innerHeight) < 700;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.75 : 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    const aniso = renderer.capabilities.getMaxAnisotropy();
+
+    const scene = new THREE.Scene();
+    const sky = document.createElement('canvas'); sky.width = 4; sky.height = 256;
+    const sg = sky.getContext('2d');
+    const sgr = sg.createLinearGradient(0, 0, 0, 256);
+    sgr.addColorStop(0, '#7FC6FF'); sgr.addColorStop(.6, '#CDEBFF'); sgr.addColorStop(1, '#F1FAFF');
+    sg.fillStyle = sgr; sg.fillRect(0, 0, 4, 256);
+    scene.background = new THREE.CanvasTexture(sky);
+    scene.fog = new THREE.Fog(0xE2F2FF, 34, 80);
+    const camera = new THREE.PerspectiveCamera(40, 2, 0.1, 200);
+
+    scene.add(new THREE.HemisphereLight(0xF2FAFF, 0x3D7D3D, 0.78));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.82);
+    sun.position.set(-7, 15, 8); sun.target.position.set(0, 0, -4);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
+    Object.assign(sun.shadow.camera, { left: -13, right: 13, top: 13, bottom: -13, near: 2, far: 50 });
+    sun.shadow.camera.updateProjectionMatrix();
+    sun.shadow.bias = -0.0006;
+    scene.add(sun, sun.target);
+
+    // Grass with mowing stripes
+    const gc = document.createElement('canvas'); gc.width = gc.height = 512;
+    const gg = gc.getContext('2d');
+    for (let i = 0; i < 4; i++) { gg.fillStyle = i % 2 ? '#35A24E' : '#41AF59'; gg.fillRect(0, i * 128, 512, 128); }
+    for (let i = 0; i < 9000; i++) { gg.fillStyle = Math.random() < .5 ? 'rgba(15,80,30,.10)' : 'rgba(255,255,255,.05)'; gg.fillRect(Math.random() * 512, Math.random() * 512, 1.5, 1.5 + Math.random() * 2); }
+    const grassTex = new THREE.CanvasTexture(gc);
+    grassTex.wrapS = grassTex.wrapT = THREE.RepeatWrapping; grassTex.repeat.set(10, 10); grassTex.anisotropy = aniso;
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(140, 140), new THREE.MeshLambertMaterial({ map: grassTex }));
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+    // Layout constants
+    const R = 7, W = 3, H = 1.5, D = 1.1, HB = H * 0.72, BR = 0.3;
+    const angles = [-45, -15, 15, 45].map(a => a * Math.PI / 180);
+
+    // Chalk lines
+    const chalk = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .93 });
+    const flat = (geo, y = 0.012) => { const m = new THREE.Mesh(geo, chalk); m.rotation.x = -Math.PI / 2; m.position.y = y; scene.add(m); return m; };
+    flat(new THREE.CircleGeometry(0.16, 24));
+    flat(new THREE.RingGeometry(1.8, 1.9, 96));
+    flat(new THREE.RingGeometry(R - 0.06, R + 0.06, 180, 1, Math.PI / 2 - 1.15, 2.3));
+    flat(new THREE.RingGeometry(R + 2.2, R + 2.3, 180, 1, Math.PI / 2 - 1.15, 2.3));
+
+    // Net texture
+    const nc = document.createElement('canvas'); nc.width = nc.height = 64;
+    const ng = nc.getContext('2d');
+    ng.strokeStyle = 'rgba(255,255,255,.95)'; ng.lineWidth = 3.2;
+    ng.beginPath(); ng.moveTo(0, 0); ng.lineTo(64, 64); ng.moveTo(64, 0); ng.lineTo(0, 64); ng.stroke();
+    const netTex = new THREE.CanvasTexture(nc);
+    netTex.wrapS = netTex.wrapT = THREE.RepeatWrapping; netTex.anisotropy = aniso;
+    const netMat = new THREE.MeshBasicMaterial({ map: netTex, transparent: true, side: THREE.DoubleSide, depthWrite: false });
+    const supMat = new THREE.MeshStandardMaterial({ color: 0xD5DADF, roughness: .5 });
+    const UP = new THREE.Vector3(0, 1, 0);
+    const V = (x, y, z) => new THREE.Vector3(x, y, z);
+    function bar(group, a, b, r, mat) {
+      const dir = new THREE.Vector3().subVectors(b, a);
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, dir.length(), 14), mat);
+      m.position.copy(a).addScaledVector(dir, .5);
+      m.quaternion.setFromUnitVectors(UP, dir.normalize());
+      m.castShadow = true; group.add(m); return m;
+    }
+    const scaleUV = (geo, su, sv) => { const u = geo.attributes.uv; for (let k = 0; k < u.count; k++) u.setXY(k, u.getX(k) * su, u.getY(k) * sv); };
+
+    const goals = angles.map((th, i) => {
+      const g = new THREE.Group();
+      const postMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .32, metalness: .05, emissive: 0x000000 });
+      const pr = 0.075;
+      bar(g, V(-W / 2, 0, 0), V(-W / 2, H + pr, 0), pr, postMat);
+      bar(g, V(W / 2, 0, 0), V(W / 2, H + pr, 0), pr, postMat);
+      bar(g, V(-W / 2 - pr, H, 0), V(W / 2 + pr, H, 0), pr, postMat);
+      [-1, 1].forEach(s => {
+        bar(g, V(s * W / 2, H, 0), V(s * W / 2, HB, -D), .03, supMat);
+        bar(g, V(s * W / 2, HB, -D), V(s * W / 2, 0, -D), .03, supMat);
+        bar(g, V(s * W / 2, 0, 0), V(s * W / 2, 0, -D), .03, supMat);
+      });
+      bar(g, V(-W / 2, HB, -D), V(W / 2, HB, -D), .03, supMat);
+      bar(g, V(-W / 2, 0, -D), V(W / 2, 0, -D), .03, supMat);
+
+      const backGeo = new THREE.PlaneGeometry(W, HB, 30, 12); scaleUV(backGeo, W / 0.2, HB / 0.2);
+      const back = new THREE.Mesh(backGeo, netMat); back.position.set(0, HB / 2, -D); g.add(back);
+      const topLen = Math.hypot(D, H - HB);
+      const topGeo = new THREE.PlaneGeometry(W, topLen); scaleUV(topGeo, W / 0.2, topLen / 0.2);
+      const topNet = new THREE.Mesh(topGeo, netMat); topNet.position.set(0, (H + HB) / 2, -D / 2); topNet.rotation.x = Math.atan2(D, H - HB); g.add(topNet);
+      [-1, 1].forEach(s => {
+        const geo = new THREE.BufferGeometry(); const x = s * W / 2;
+        geo.setAttribute('position', new THREE.Float32BufferAttribute([x, 0, 0, x, H, 0, x, HB, -D, x, 0, -D], 3));
+        geo.setAttribute('uv', new THREE.Float32BufferAttribute([0, 0, 0, H / .2, D / .2, HB / .2, D / .2, 0], 2));
+        geo.setIndex([0, 1, 2, 0, 2, 3]);
+        g.add(new THREE.Mesh(geo, netMat));
+      });
+      const hit = new THREE.Mesh(new THREE.BoxGeometry(W + .5, H + .7, D + .7), new THREE.MeshBasicMaterial({ visible: false }));
+      hit.position.set(0, H / 2, -D / 2); hit.userData.goal = i + 1; g.add(hit);
+      g.position.set(R * Math.sin(th), 0, -R * Math.cos(th)); g.rotation.y = -th;
+      scene.add(g);
+      return { group: g, postMat, backGeo, orig: Float32Array.from(backGeo.attributes.position.array), hit, bulge: null };
+    });
+
+    // Corner flags
+    const flags = [];
+    const flagShape = new THREE.Shape(); flagShape.moveTo(0, 0); flagShape.lineTo(0.55, 0.19); flagShape.lineTo(0, 0.38); flagShape.closePath();
+    [-1, 1].forEach(s => {
+      const th = s * 64 * Math.PI / 180, x = R * Math.sin(th), z = -R * Math.cos(th);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, 1.6, 8), new THREE.MeshStandardMaterial({ color: 0xffffff }));
+      pole.position.set(x, .8, z); pole.castShadow = true; scene.add(pole);
+      const f = new THREE.Mesh(new THREE.ShapeGeometry(flagShape), new THREE.MeshLambertMaterial({ color: 0xFBE122, side: THREE.DoubleSide }));
+      f.position.set(x, 1.2, z); f.castShadow = true; scene.add(f); flags.push({ mesh: f, phase: s });
+    });
+
+    // Stands with crowd
+    const cc = document.createElement('canvas'); cc.width = 512; cc.height = 256;
+    const cg = cc.getContext('2d');
+    cg.fillStyle = '#B5180E'; cg.fillRect(0, 0, 512, 256);
+    for (let r = 0; r < 16; r++) { cg.fillStyle = r % 2 ? '#C9241A' : '#A6140A'; cg.fillRect(0, r * 16, 512, 10); }
+    const crowdCols = ['#FFFFFF', '#FBE122', '#1B1214', '#F1C9A0', '#DA291C', '#FFFFFF', '#2B2B2B'];
+    for (let i = 0; i < 2800; i++) { if (Math.random() < .6) { cg.fillStyle = crowdCols[(Math.random() * crowdCols.length) | 0]; cg.fillRect(Math.random() * 512, ((Math.random() * 16) | 0) * 16 + 2, 3, 5); } }
+    const standMat = new THREE.MeshLambertMaterial({ map: new THREE.CanvasTexture(cc) });
+    const wallMat = new THREE.MeshLambertMaterial({ color: 0x2A2224 });
+    const step = 7, half = step / 2 * Math.PI / 180;
+    const tierGeo = [0, 1, 2, 3].map(k => { const rad = R + 8 + k * 1.9; return new THREE.BoxGeometry(2 * rad * Math.tan(half) + .05, (k + 1) * 1.05, 1.9); });
+    const wallRad = R + 8 + 4 * 1.9 + .3;
+    const wallGeo = new THREE.BoxGeometry(2 * wallRad * Math.tan(half) + .05, 6.2, .6);
+    for (let a = -84; a <= 84; a += step) {
+      const th = a * Math.PI / 180;
+      for (let k = 0; k < 4; k++) {
+        const rad = R + 8 + k * 1.9;
+        const m = new THREE.Mesh(tierGeo[k], standMat);
+        m.position.set(rad * Math.sin(th), (k + 1) * 1.05 / 2, -rad * Math.cos(th)); m.rotation.y = -th; scene.add(m);
+      }
+      const w = new THREE.Mesh(wallGeo, wallMat);
+      w.position.set(wallRad * Math.sin(th), 3.1, -wallRad * Math.cos(th)); w.rotation.y = -th; scene.add(w);
+    }
+
+    // LED hoardings (one shared scrolling texture)
+    const ac = document.createElement('canvas'); ac.width = 4096; ac.height = 128;
+    const drawAds = () => {
+      const g = ac.getContext('2d');
+      g.fillStyle = '#141011'; g.fillRect(0, 0, 4096, 128);
+      const items = [['NGUYỄN HẢI LÂN', '#FBE122'], ['#16', '#FFFFFF'], ['KINH TẾ ĐỐI NGOẠI', '#FFFFFF'], ['FTU · K63', '#FBE122'], ['INCOTERMS · FOB · CIF', '#FFFFFF'], ['MANCHESTER UNITED', '#FF4A3A']];
+      g.font = '800 62px Archivo, "Arial Narrow", sans-serif'; g.textBaseline = 'middle';
+      let x = 40;
+      items.forEach(([txt, col]) => { g.fillStyle = col; g.fillText(txt, x, 68); x += g.measureText(txt).width + 46; g.fillStyle = '#DA291C'; g.fillText('★', x, 66); x += 110; });
+    };
+    drawAds();
+    const adTex = new THREE.CanvasTexture(ac);
+    adTex.wrapS = THREE.RepeatWrapping; adTex.anisotropy = aniso;
+    fontsReady.then(() => { drawAds(); adTex.needsUpdate = true; });
+    const adMat = new THREE.MeshBasicMaterial({ map: adTex });
+    const frameMat = new THREE.MeshLambertMaterial({ color: 0x1B1214 });
+    const RB = R + 4.6, adStep = 5, adH = .78, textLen = adH * 32;
+    for (let a = -80, idx = 0; a <= 80; a += adStep, idx++) {
+      const th = a * Math.PI / 180, segW = 2 * RB * Math.tan(adStep / 2 * Math.PI / 180) + .02;
+      const fr = new THREE.Mesh(new THREE.BoxGeometry(segW, adH + .08, .14), frameMat);
+      fr.position.set(RB * Math.sin(th), (adH + .08) / 2, -RB * Math.cos(th)); fr.rotation.y = -th; fr.castShadow = true; scene.add(fr);
+      const pg = new THREE.PlaneGeometry(segW, adH);
+      const u = pg.attributes.uv, u0 = idx * segW / textLen;
+      for (let k = 0; k < u.count; k++) u.setX(k, u0 + u.getX(k) * segW / textLen);
+      const scr = new THREE.Mesh(pg, adMat);
+      scr.position.set((RB - .075) * Math.sin(th), (adH + .08) / 2, -(RB - .075) * Math.cos(th)); scr.rotation.y = -th; scene.add(scr);
+    }
+
+    // Floodlights
+    const lc = document.createElement('canvas'); lc.width = 128; lc.height = 64;
+    const lg = lc.getContext('2d'); lg.fillStyle = '#2A2224'; lg.fillRect(0, 0, 128, 64);
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 6; c++) { lg.fillStyle = '#FFFBE6'; lg.beginPath(); lg.arc(12 + c * 21, 12 + r * 20, 8, 0, Math.PI * 2); lg.fill(); }
+    const lampFace = new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(lc) });
+    const lampBody = new THREE.MeshLambertMaterial({ color: 0x3A3436 });
+    [-1, 1].forEach(s => {
+      const th = s * 70 * Math.PI / 180, rad = R + 18, x = rad * Math.sin(th), z = -rad * Math.cos(th);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(.18, .3, 16, 10), new THREE.MeshLambertMaterial({ color: 0x9AA3AA }));
+      pole.position.set(x, 8, z); scene.add(pole);
+      const head = new THREE.Mesh(new THREE.BoxGeometry(3.6, 1.8, .4), [lampBody, lampBody, lampBody, lampBody, lampFace, lampBody]);
+      head.position.set(x, 16.6, z); head.lookAt(0, 0, -3); scene.add(head);
+    });
+
+    // Ball (12 dark patches on a white sphere)
+    const ballGeo = new THREE.IcosahedronGeometry(BR, 10);
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const centers = [[0, 1, phi], [0, -1, phi], [0, 1, -phi], [0, -1, -phi], [1, phi, 0], [-1, phi, 0], [1, -phi, 0], [-1, -phi, 0], [phi, 0, 1], [-phi, 0, 1], [phi, 0, -1], [-phi, 0, -1]].map(v => new THREE.Vector3(...v).normalize());
+    const bp = ballGeo.attributes.position, nv = new THREE.Vector3(), cols = [];
+    const lo = Math.cos(.40), hiC = Math.cos(.355);
+    for (let i = 0; i < bp.count; i++) {
+      nv.set(bp.getX(i), bp.getY(i), bp.getZ(i)).normalize();
+      let m = -1; for (const c of centers) m = Math.max(m, nv.dot(c));
+      const k = THREE.MathUtils.smoothstep(m, lo, hiC), v = 1 - k * 0.9;
+      cols.push(v, v, v * .98);
+    }
+    ballGeo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
+    const ball = new THREE.Mesh(ballGeo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .42 }));
+    ball.castShadow = true; ball.position.set(0, BR, 0); ball.rotation.set(.4, .3, 0); scene.add(ball);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(.46, .54, 48), new THREE.MeshBasicMaterial({ color: 0xFBE122, transparent: true, opacity: .9 }));
+    ring.rotation.x = -Math.PI / 2; ring.position.y = .016; scene.add(ring);
+
+    // Camera framing
+    const base = { pos: new THREE.Vector3(), look: new THREE.Vector3() };
+    const camGoal = new THREE.Vector3(); let camAmt = 0;
+    function fit() {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      const aspect = w / h;
+      camera.aspect = aspect; camera.fov = aspect < 1 ? 60 : aspect < 1.5 ? 48 : 40; camera.updateProjectionMatrix();
+      scene.updateMatrixWorld(true);
+      const elev = (aspect < 1 ? 40 : 25) * Math.PI / 180;
+      const look = V(0, 0.4, -R * 0.55);
+      const dir = V(0, Math.sin(elev), Math.cos(elev));
+      const pts = [];
+      goals.forEach(G => [[-W / 2 - .1, 0, 0], [W / 2 + .1, 0, 0], [-W / 2, H + 1.1, 0], [W / 2, H + 1.1, 0]].forEach(q => pts.push(G.group.localToWorld(V(...q)))));
+      pts.push(V(0, 0, 1.0), V(-.7, 0, .7), V(.7, 0, .7));
+      let a = 3, b = 90;
+      for (let it = 0; it < 32; it++) {
+        const d = (a + b) / 2;
+        camera.position.copy(look).addScaledVector(dir, d); camera.lookAt(look); camera.updateMatrixWorld();
+        const ok = pts.every(p => { const v = p.clone().project(camera); return Math.abs(v.x) < .9 && v.y > -.86 && v.y < .8; });
+        if (ok) b = d; else a = d;
+      }
+      base.pos.copy(look).addScaledVector(dir, b); base.look.copy(look);
+      camera.position.copy(base.pos); camera.lookAt(base.look);
+    }
+    new ResizeObserver(fit).observe(stage); fit();
+
+    // Interaction
+    const ray = new THREE.Raycaster(), mouse = new THREE.Vector2(), hits = goals.map(G => G.hit);
+    let hovered = 0;
+    function pick(e) {
+      const r = canvas.getBoundingClientRect();
+      mouse.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(mouse, camera);
+      const res = ray.intersectObjects(hits, false);
+      return res.length ? res[0].object.userData.goal : 0;
+    }
+    function paintGoals() {
+      goals.forEach((G, i) => {
+        const n = i + 1;
+        G.postMat.color.set(scored.has(n) ? 0xFBE122 : 0xffffff);
+        G.postMat.emissive.set(hovered === n ? 0x5A4200 : 0x000000);
+        labels[i].classList.toggle('hover', hovered === n);
+      });
+    }
+    function setHover(n) {
+      if (busy) n = 0;
+      if (n === hovered) return;
+      hovered = n; canvas.style.cursor = n ? 'pointer' : ''; paintGoals();
+    }
+    canvas.addEventListener('pointermove', e => setHover(pick(e)));
+    canvas.addEventListener('pointerleave', () => setHover(0));
+    canvas.addEventListener('click', e => { const n = pick(e); if (n) shoot(n); });
+
+    // Screen helpers
+    function toScreen(v) {
+      const p = v.clone().project(camera);
+      return { x: (p.x + 1) / 2 * stage.clientWidth, y: (1 - p.y) / 2 * stage.clientHeight };
+    }
+    function goalRect(n) {
+      const G = goals[n - 1], sr = stage.getBoundingClientRect();
+      const ps = [[-W / 2, 0, 0], [W / 2, 0, 0], [-W / 2, H, 0], [W / 2, H, 0]].map(q => toScreen(G.group.localToWorld(V(...q))));
+      const xs = ps.map(p => p.x), ys = ps.map(p => p.y);
+      const left = sr.left + Math.min(...xs), top = sr.top + Math.min(...ys);
+      const width = Math.max(...xs) - Math.min(...xs), height = Math.max(...ys) - Math.min(...ys);
+      return { left, top, width, height, bottom: top + height };
+    }
+
+    // Shot state
+    let flight = null;
+    function shoot3D(n, onGoal) {
+      setHover(0);
+      const G = goals[n - 1];
+      const local = V((Math.random() - .5) * W * .5, H * .4 + Math.random() * H * .18, -D * .62);
+      const end = G.group.localToWorld(local.clone());
+      const drop = G.group.localToWorld(V(local.x, BR, -D * .78));
+      const start = ball.position.clone();
+      const side = new THREE.Vector3().subVectors(end, start).cross(UP).normalize();
+      camGoal.copy(end);
+      flight = { n, G, local, onGoal, phase: 'kick', t: 0, start, end, drop, side, bend: (Math.random() < .5 ? -1 : 1) * (.3 + Math.random() * .35), apex: .9 + start.distanceTo(end) * .06 };
+      ring.visible = false;
+    }
+    function resetBall() {
+      flight = { phase: 'return', t: 0 };
+      ball.position.set(0, BR + 2.4, 0);
+      ring.visible = true;
+    }
+    const bounce = u => { const n1 = 7.5625, d1 = 2.75; if (u < 1 / d1) return n1 * u * u; if (u < 2 / d1) return n1 * (u -= 1.5 / d1) * u + .75; if (u < 2.5 / d1) return n1 * (u -= 2.25 / d1) * u + .9375; return n1 * (u -= 2.625 / d1) * u + .984375; };
+
+    const tmpLook = new THREE.Vector3();
+    loopWhileVisible(stage, (t, dt) => {
+      if (flight) {
+        flight.t += dt;
+        const f = flight;
+        if (f.phase === 'kick') {
+          const u = Math.min(f.t / .12, 1);
+          ball.scale.set(1 + .08 * Math.sin(u * Math.PI), 1 - .14 * Math.sin(u * Math.PI), 1 + .08 * Math.sin(u * Math.PI));
+          if (u >= 1) { ball.scale.set(1, 1, 1); f.phase = 'fly'; f.t = 0; }
+        } else if (f.phase === 'fly') {
+          const u = Math.min(f.t / .9, 1), s = 1 - Math.pow(1 - u, 1.7), arc = 4 * s * (1 - s);
+          ball.position.lerpVectors(f.start, f.end, s);
+          ball.position.y += f.apex * arc;
+          ball.position.addScaledVector(f.side, f.bend * arc);
+          ball.rotateOnWorldAxis(f.side, -dt * 18);
+          camAmt = s;
+          if (u >= 1) {
+            f.phase = 'net'; f.t = 0;
+            f.G.bulge = { t: 0, hx: f.local.x, hy: f.local.y - HB / 2 };
+            const p = toScreen(f.end), sr = stage.getBoundingClientRect();
+            f.onGoal(sr.left + p.x + window.scrollX, sr.top + p.y + window.scrollY - 30);
+          }
+        } else if (f.phase === 'net') {
+          const u = Math.min(f.t / .5, 1);
+          ball.position.lerpVectors(f.end, f.drop, Math.min(u * 1.6, 1));
+          ball.position.y = THREE.MathUtils.lerp(f.end.y, BR, u * u);
+          ball.rotateOnWorldAxis(f.side, -dt * 6 * (1 - u));
+          if (u >= 1) f.phase = 'rest';
+        } else if (f.phase === 'return') {
+          const u = Math.min(f.t / .75, 1);
+          ball.position.y = BR + 2.4 * (1 - bounce(u));
+          camAmt = Math.max(0, camAmt - dt * 2.2);
+          if (u >= 1 && camAmt === 0) flight = null;
+        }
+      }
+      // Net bulge
+      goals.forEach(G => {
+        if (!G.bulge) return;
+        const b = G.bulge; b.t += dt;
+        const amp = .45 * Math.exp(-b.t * 3.2) * Math.cos(b.t * 13);
+        const arr = G.backGeo.attributes.position.array, o = G.orig;
+        for (let i = 0; i < arr.length; i += 3) {
+          const dx = o[i] - b.hx, dy = o[i + 1] - b.hy;
+          arr[i + 2] = o[i + 2] - amp * Math.exp(-(dx * dx + dy * dy) / .45);
+        }
+        if (b.t > 1.8) { arr.set(o); G.bulge = null; }
+        G.backGeo.attributes.position.needsUpdate = true;
+      });
+      // Ambient motion
+      if (!reduce) {
+        flags.forEach(fl => { fl.mesh.rotation.y = fl.phase * .5 + Math.sin(t * 3 + fl.phase) * .35; });
+        adTex.offset.x = (t * .03) % 1;
+        const pulse = (t * 1.2) % 1;
+        ring.scale.setScalar(1 + pulse * .35); ring.material.opacity = .9 * (1 - pulse);
+      }
+      // Camera
+      camera.position.lerpVectors(base.pos, camGoal, camAmt * .2);
+      if (!reduce) camera.position.x += Math.sin(t * .35) * .12;
+      tmpLook.lerpVectors(base.look, camGoal, camAmt * .35);
+      camera.lookAt(tmpLook);
+      // Labels follow goals
+      goals.forEach((G, i) => {
+        const p = toScreen(G.group.localToWorld(V(0, H + .3, 0)));
+        labels[i].style.left = p.x + 'px'; labels[i].style.top = p.y + 'px';
+      });
+      renderer.render(scene, camera);
+      if (!stage.classList.contains('ready')) stage.classList.add('ready');
+    });
+
+    return { shoot: shoot3D, resetBall, goalRect, setHover, paintGoals };
+  }
+
+  if (has3D) {
+    try { initJersey(); } catch (e) { document.getElementById('showcase').classList.add('no3d'); }
+    try { pitch = initPitch(); } catch (e) { pitch = null; }
+  } else {
+    document.getElementById('showcase').classList.add('no3d');
+  }
+  if (!pitch) stage.classList.add('no3d');
+})();
+</script>
+
+</body>
+</html>
